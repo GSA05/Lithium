@@ -1,0 +1,30 @@
+﻿Сборка начата 17.10.2014 13:03:27.
+     1>Проект "c:\Projects\Lithium\Lithium\Lithium.vcxproj" в узле 2 (целевые объекты Build).
+     1>CustomBuild:
+         Moc'ing lithium.h...
+         Uic'ing lithium.ui...
+         Rcc'ing lithium.qrc...
+     1>RCC : warning : No resources in 'c:\Projects\Lithium\Lithium\lithium.qrc'.
+         
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I.\GeneratedFiles /I. /IC:\Qt\5.3\msvc2013_64\include /I.\GeneratedFiles\Debug /IC:\Qt\5.3\msvc2013_64\include\QtCore /IC:\Qt\5.3\msvc2013_64\include\QtGui /IC:\Qt\5.3\msvc2013_64\include\QtWidgets /Zi /nologo /W1 /WX- /Od /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt GeneratedFiles\Debug\moc_lithium.cpp lithium.cpp main.cpp
+         moc_lithium.cpp
+         lithium.cpp
+         main.cpp
+         Создание кода...
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I.\GeneratedFiles /I. /IC:\Qt\5.3\msvc2013_64\include /I.\GeneratedFiles\Debug /IC:\Qt\5.3\msvc2013_64\include\QtCore /IC:\Qt\5.3\msvc2013_64\include\QtGui /IC:\Qt\5.3\msvc2013_64\include\QtWidgets /Zi /nologo /W1 /WX- /Od /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt GeneratedFiles\qrc_lithium.cpp
+         qrc_lithium.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"x64\Debug\Lithium.res" Lithium.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"c:\Projects\Lithium\x64\Debug\\Lithium.exe" /NOLOGO /LIBPATH:C:\Qt\5.3\msvc2013_64\lib qtmaind.lib Qt5Cored.lib Qt5Guid.lib Qt5Widgetsd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\Projects\Lithium\x64\Debug\Lithium.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\Projects\Lithium\x64\Debug\Lithium.lib" /MACHINE:X64 x64\Debug\Lithium.res
+         x64\Debug\moc_lithium.obj
+         x64\Debug\qrc_lithium.obj
+         x64\Debug\lithium.obj
+         x64\Debug\main.obj
+         Lithium.vcxproj -> c:\Projects\Lithium\x64\Debug\Lithium.exe
+     1>Сборка проекта "c:\Projects\Lithium\Lithium\Lithium.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+Затраченное время: 00:00:04.85
