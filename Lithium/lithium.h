@@ -2,6 +2,7 @@
 #define LITHIUM_H
 
 #include <QtWidgets/QMainWindow>
+#include <QFileDialog>
 #include "ui_lithium.h"
 
 class Lithium : public QMainWindow
@@ -14,6 +15,10 @@ public:
 
 private:
 	Ui::LithiumClass ui;
+	QFileDialog fd;
+
+private slots:
+	void FileDialog();
 };
 
 #endif // LITHIUM_H

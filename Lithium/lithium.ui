@@ -78,8 +78,6 @@
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>listView</tabstop>
-  <tabstop>pushButtonOpen</tabstop>
-  <tabstop>pushButtonAdd</tabstop>
   <tabstop>pushButtonRemove</tabstop>
  </tabstops>
  <resources>
