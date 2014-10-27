@@ -15,10 +15,6 @@ public:
 
 private:
 	Ui::LithiumClass ui;
-	QFileDialog fd;
-
-private slots:
-	void FileDialog();
 };
 
 #endif // LITHIUM_H
