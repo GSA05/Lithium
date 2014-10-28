@@ -20,13 +20,17 @@ private slots:
 
 private:
 	Ui::LithiumClass ui;
+    QString currentDir;
 };
 
 class MacsecFile
 {
 public:
-    MacsecFile();
+    MacsecFile(QString path = "");
     ~MacsecFile();
+
+private:
+    QString pth;
 };
 
 #endif // LITHIUM_H
