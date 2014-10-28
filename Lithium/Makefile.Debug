@@ -126,7 +126,7 @@ $(OBJECTS) $(LIBS) debug\Lithium.exe_manifest.res
 	if exist debug\Lithium.exe_manifest.bak del debug\Lithium.exe_manifest.bak
 
 qmake: FORCE
-	@$(QMAKE) -spec win32-msvc2013 CONFIG+=debug -o Makefile.Debug ..\Lithium.pro
+	@$(QMAKE) -spec win32-msvc2013 -o Makefile.Debug ..\Lithium.pro
 
 qmake_all: FORCE
 
@@ -264,6 +264,54 @@ debug\moc_lithium.cpp: ..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMainWin
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qfileinfo.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdialog.h \
 		ui_lithium.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\QVariant \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QAction \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qaction.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qactiongroup.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QApplication \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qcoreapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qeventloop.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdesktopwidget.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qguiapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qinputmethod.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QButtonGroup \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qbuttongroup.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHeaderView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qheaderview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qframe.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qitemselectionmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qvalidator.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyle.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qtabbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qrubberband.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QListView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlistview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenu \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenu.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenuBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenubar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QPushButton \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qpushbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QStatusBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstatusbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QWidget \
 		lithium.h
 	C:\Qt\5.3\msvc2013_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1800 -D_WIN32 -D_WIN64 -IC:/Qt/5.3/msvc2013_64/mkspecs/win32-msvc2013 -IC:/Projects/Lithium -IC:/Qt/5.3/msvc2013_64/include -IC:/Qt/5.3/msvc2013_64/include/QtWidgets -IC:/Qt/5.3/msvc2013_64/include/QtGui -IC:/Qt/5.3/msvc2013_64/include/QtANGLE -IC:/Qt/5.3/msvc2013_64/include/QtCore -I. lithium.h -o debug\moc_lithium.cpp
 
@@ -376,6 +424,54 @@ debug\moc_lithium.cpp: ..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMainWin
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qfileinfo.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdialog.h \
 		ui_lithium.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\QVariant \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QAction \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qaction.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qactiongroup.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QApplication \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qcoreapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qeventloop.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdesktopwidget.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qguiapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qinputmethod.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QButtonGroup \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qbuttongroup.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHeaderView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qheaderview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qframe.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qitemselectionmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qvalidator.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyle.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qtabbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qrubberband.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QListView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlistview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenu \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenu.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenuBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenubar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QPushButton \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qpushbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QStatusBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstatusbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QWidget \
 		lithium.h
 	C:\Qt\5.3\msvc2013_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1800 -D_WIN32 -D_WIN64 -IC:/Qt/5.3/msvc2013_64/mkspecs/win32-msvc2013 -IC:/Projects/Lithium -IC:/Qt/5.3/msvc2013_64/include -IC:/Qt/5.3/msvc2013_64/include/QtWidgets -IC:/Qt/5.3/msvc2013_64/include/QtGui -IC:/Qt/5.3/msvc2013_64/include/QtANGLE -IC:/Qt/5.3/msvc2013_64/include/QtCore -I. lithium.h -o debug\moc_lithium.cpp
 
@@ -512,13 +608,54 @@ debug\main.obj: main.cpp lithium.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qfileinfo.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdialog.h \
 		ui_lithium.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\QVariant \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QAction \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qaction.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qactiongroup.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QApplication \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qapplication.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qcoreapplication.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qeventloop.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdesktopwidget.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qguiapplication.h \
-		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qinputmethod.h
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qinputmethod.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QButtonGroup \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qbuttongroup.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHeaderView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qheaderview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qframe.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qitemselectionmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qvalidator.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyle.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qtabbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qrubberband.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QListView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlistview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenu \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenu.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenuBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenubar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QPushButton \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qpushbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QStatusBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstatusbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QWidget
 
 debug\lithium.obj: lithium.cpp lithium.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMainWindow \
@@ -629,7 +766,55 @@ debug\lithium.obj: lithium.cpp lithium.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qdir.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qfileinfo.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdialog.h \
-		ui_lithium.h
+		ui_lithium.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\QVariant \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QAction \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qaction.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qactiongroup.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QApplication \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qcoreapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qeventloop.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdesktopwidget.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qguiapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qinputmethod.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QButtonGroup \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qbuttongroup.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHeaderView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qheaderview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qframe.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qitemselectionmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qvalidator.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyle.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qtabbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qrubberband.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QListView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlistview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenu \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenu.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenuBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenubar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QPushButton \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qpushbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QStatusBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstatusbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QWidget
 
 debug\lithium.obj: lithium.cpp lithium.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMainWindow \
@@ -740,7 +925,55 @@ debug\lithium.obj: lithium.cpp lithium.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qdir.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qfileinfo.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdialog.h \
-		ui_lithium.h
+		ui_lithium.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\QVariant \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QAction \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qaction.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qactiongroup.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QApplication \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qcoreapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qeventloop.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdesktopwidget.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qguiapplication.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qinputmethod.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QButtonGroup \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qbuttongroup.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHeaderView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qheaderview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qframe.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qitemselectionmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qvalidator.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyle.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qtabbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qrubberband.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QListView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlistview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenu \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenu.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenuBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenubar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QPushButton \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qpushbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QStatusBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstatusbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QWidget
 
 debug\main.obj: main.cpp lithium.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMainWindow \
@@ -852,13 +1085,54 @@ debug\main.obj: main.cpp lithium.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qfileinfo.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdialog.h \
 		ui_lithium.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\QVariant \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QAction \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qaction.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qactiongroup.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QApplication \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qapplication.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qcoreapplication.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qeventloop.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qdesktopwidget.h \
 		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qguiapplication.h \
-		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qinputmethod.h
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qinputmethod.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QButtonGroup \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qbuttongroup.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QHeaderView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qheaderview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qframe.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qitemselectionmodel.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtGui\qvalidator.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstyle.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qtabbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qrubberband.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QListView \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qlistview.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenu \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenu.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QMenuBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qmenubar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QPushButton \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qpushbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QStatusBar \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\qstatusbar.h \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\..\Qt\5.3\msvc2013_64\include\QtWidgets\QWidget
 
 debug\moc_lithium.obj: debug\moc_lithium.cpp 
 

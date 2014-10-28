@@ -29,15 +29,15 @@ QT_BEGIN_NAMESPACE
 class Ui_LithiumClass
 {
 public:
-    QAction *action;
-    QAction *action_2;
+    QAction *openAction;
+    QAction *quitAction;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_2;
     QListView *listView;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButtonOpen;
-    QPushButton *pushButtonAdd;
-    QPushButton *pushButtonRemove;
+    QPushButton *openButton;
+    QPushButton *addButton;
+    QPushButton *removeButton;
     QMenuBar *menuBar;
     QMenu *menu;
     QStatusBar *statusBar;
@@ -47,10 +47,10 @@ public:
         if (LithiumClass->objectName().isEmpty())
             LithiumClass->setObjectName(QStringLiteral("LithiumClass"));
         LithiumClass->resize(304, 351);
-        action = new QAction(LithiumClass);
-        action->setObjectName(QStringLiteral("action"));
-        action_2 = new QAction(LithiumClass);
-        action_2->setObjectName(QStringLiteral("action_2"));
+        openAction = new QAction(LithiumClass);
+        openAction->setObjectName(QStringLiteral("openAction"));
+        quitAction = new QAction(LithiumClass);
+        quitAction->setObjectName(QStringLiteral("quitAction"));
         centralWidget = new QWidget(LithiumClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout_2 = new QVBoxLayout(centralWidget);
@@ -65,20 +65,20 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        pushButtonOpen = new QPushButton(centralWidget);
-        pushButtonOpen->setObjectName(QStringLiteral("pushButtonOpen"));
+        openButton = new QPushButton(centralWidget);
+        openButton->setObjectName(QStringLiteral("openButton"));
 
-        horizontalLayout->addWidget(pushButtonOpen);
+        horizontalLayout->addWidget(openButton);
 
-        pushButtonAdd = new QPushButton(centralWidget);
-        pushButtonAdd->setObjectName(QStringLiteral("pushButtonAdd"));
+        addButton = new QPushButton(centralWidget);
+        addButton->setObjectName(QStringLiteral("addButton"));
 
-        horizontalLayout->addWidget(pushButtonAdd);
+        horizontalLayout->addWidget(addButton);
 
-        pushButtonRemove = new QPushButton(centralWidget);
-        pushButtonRemove->setObjectName(QStringLiteral("pushButtonRemove"));
+        removeButton = new QPushButton(centralWidget);
+        removeButton->setObjectName(QStringLiteral("removeButton"));
 
-        horizontalLayout->addWidget(pushButtonRemove);
+        horizontalLayout->addWidget(removeButton);
 
 
         verticalLayout_2->addLayout(horizontalLayout);
@@ -93,13 +93,14 @@ public:
         statusBar = new QStatusBar(LithiumClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         LithiumClass->setStatusBar(statusBar);
-        QWidget::setTabOrder(listView, pushButtonRemove);
+        QWidget::setTabOrder(listView, removeButton);
 
         menuBar->addAction(menu->menuAction());
-        menu->addAction(action);
-        menu->addAction(action_2);
+        menu->addAction(openAction);
+        menu->addAction(quitAction);
 
         retranslateUi(LithiumClass);
+        QObject::connect(openButton, SIGNAL(clicked()), openAction, SLOT(trigger()));
 
         QMetaObject::connectSlotsByName(LithiumClass);
     } // setupUi
@@ -107,11 +108,11 @@ public:
     void retranslateUi(QMainWindow *LithiumClass)
     {
         LithiumClass->setWindowTitle(QApplication::translate("LithiumClass", "Lithium", 0));
-        action->setText(QApplication::translate("LithiumClass", "\320\236\321\202\320\272\321\200\321\213\321\202\321\214...", 0));
-        action_2->setText(QApplication::translate("LithiumClass", "\320\222\321\213\321\205\320\276\320\264", 0));
-        pushButtonOpen->setText(QApplication::translate("LithiumClass", "\320\236\321\202\320\272\321\200\321\213\321\202\321\214...", 0));
-        pushButtonAdd->setText(QApplication::translate("LithiumClass", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", 0));
-        pushButtonRemove->setText(QApplication::translate("LithiumClass", "\320\243\320\261\321\200\320\260\321\202\321\214", 0));
+        openAction->setText(QApplication::translate("LithiumClass", "\320\236\321\202\320\272\321\200\321\213\321\202\321\214...", 0));
+        quitAction->setText(QApplication::translate("LithiumClass", "\320\222\321\213\321\205\320\276\320\264", 0));
+        openButton->setText(QApplication::translate("LithiumClass", "\320\236\321\202\320\272\321\200\321\213\321\202\321\214...", 0));
+        addButton->setText(QApplication::translate("LithiumClass", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", 0));
+        removeButton->setText(QApplication::translate("LithiumClass", "\320\243\320\261\321\200\320\260\321\202\321\214", 0));
         menu->setTitle(QApplication::translate("LithiumClass", "\320\244\320\260\320\271\320\273", 0));
     } // retranslateUi
 
