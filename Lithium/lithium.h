@@ -2,6 +2,7 @@
 #define LITHIUM_H
 
 #include <QtWidgets/QMainWindow>
+#include <QStringListModel>
 #include "ui_lithium.h"
 
 class Lithium : public QMainWindow
@@ -21,6 +22,7 @@ private slots:
 private:
 	Ui::LithiumClass ui;
     QString currentDir;
+    QStringListModel list;
 };
 
 class MacsecFile

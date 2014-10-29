@@ -1,6 +1,5 @@
 #include "lithium.h"
 #include <QFileDialog>
-#include <QStringListModel>
 
 //Lithium
 Lithium::Lithium(QWidget *parent)
@@ -8,6 +7,7 @@ Lithium::Lithium(QWidget *parent)
 {
 	ui.setupUi(this);
     currentDir = QString();
+    ui.listView->setModel(&list);
 }
 
 Lithium::~Lithium()
@@ -17,17 +17,14 @@ Lithium::~Lithium()
 
 void Lithium::on_openAction_triggered()
 {
-    QStringListModel list;
     QFileDialog *diag = new QFileDialog(this,tr("Open..."),currentDir,tr("Macsec Files (*.mc);;All Files (*.*)"));
     QStringList fileNames("");
-    if(diag->exec())
+    if(!(fileNames = diag->getOpenFileNames(this,tr("Open..."),currentDir,tr("Macsec Files (*.mc);;All Files (*.*)"))).empty())
     {
-        fileNames = diag->selectedFiles();
         currentDir = diag->directory().currentPath();
+        list.setStringList(fileNames);
     }
-    list.setStringList(fileNames);
-    ui.listView->setModel(&list);
-    ui.listView->show();
+    //ui.listView->show();
 }
 
 void Lithium::on_quitAction_triggered()
