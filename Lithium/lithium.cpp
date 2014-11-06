@@ -17,14 +17,13 @@ Lithium::~Lithium()
 
 void Lithium::on_openAction_triggered()
 {
-    QFileDialog *diag = new QFileDialog(this,tr("Open..."),currentDir,tr("Macsec Files (*.mc);;All Files (*.*)"));
+    QFileDialog *diag = new QFileDialog(this,tr("Open..."),currentDir,tr("Macsin Files (*.mc);;All Files (*.*)"));
     QStringList fileNames("");
-    if(!(fileNames = diag->getOpenFileNames(this,tr("Open..."),currentDir,tr("Macsec Files (*.mc);;All Files (*.*)"))).empty())
+    if(!(fileNames = diag->getOpenFileNames(this,tr("Open..."),currentDir,tr("Macsin Files (*.mc);;All Files (*.*)"))).empty())
     {
         currentDir = diag->directory().currentPath();
         list.setStringList(fileNames);
     }
-    //ui.listView->show();
 }
 
 void Lithium::on_quitAction_triggered()
@@ -42,8 +41,8 @@ void Lithium::on_removeButton_clicked()
 
 }
 
-//MacsecFile
-MacsecFile::MacsecFile(QString path)
+//MacsinFile
+MacsinFile::MacsinFile(QString path)
 {
     pth=path;
 }

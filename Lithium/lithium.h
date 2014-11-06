@@ -25,11 +25,11 @@ private:
     QStringListModel list;
 };
 
-class MacsecFile
+class MacsinFile
 {
 public:
-    MacsecFile(QString path = "");
-    ~MacsecFile();
+    MacsinFile(QString path = "");
+    ~MacsinFile();
 
 private:
     QString pth;
