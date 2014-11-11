@@ -45,4 +45,10 @@ void Lithium::on_removeButton_clicked()
 MacsinFile::MacsinFile(QString path)
 {
     pth=path;
+    if(pth.size())
+    {
+        file.setFileName(pth);
+        file.open(QIODevice::Text);
+        io.setDevice(&file);
+    }
 }

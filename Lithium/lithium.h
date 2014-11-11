@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QStringListModel>
+#include <QFile>
 #include "ui_lithium.h"
 
 class Lithium : public QMainWindow
@@ -30,9 +31,12 @@ class MacsinFile
 public:
     MacsinFile(QString path = "");
     ~MacsinFile();
+    open(QString path);
 
 private:
     QString pth;
+    QFile file;
+    QTextStream io;
 };
 
 #endif // LITHIUM_H
