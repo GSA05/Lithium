@@ -52,3 +52,24 @@ MacsinFile::MacsinFile(QString path)
         io.setDevice(&file);
     }
 }
+
+void MacsinFile::open(QString path)
+{
+    pth=path;
+    if(pth.size())
+    {
+        file.setFileName(pth);
+        file.open(QIODevice::Text);
+        io.setDevice(&file);
+    }
+}
+
+void MacsinFile::add(int number, float conc)
+{
+
+}
+
+void MacsinFile::remove(int number)
+{
+
+}

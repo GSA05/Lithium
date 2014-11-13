@@ -4,6 +4,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QStringListModel>
 #include <QFile>
+#include <QTextStream>
 #include "ui_lithium.h"
 
 class Lithium : public QMainWindow
@@ -31,7 +32,10 @@ class MacsinFile
 public:
     MacsinFile(QString path = "");
     ~MacsinFile();
-    open(QString path);
+    void open(QString path); // открывает файл
+    void close(); // закрывает файл
+    void add(int number, float conc); // добавляет изотоп в материалы с заданной концентрацией
+    void remove(int number); // убирает изотоп из материалов
 
 private:
     QString pth;
