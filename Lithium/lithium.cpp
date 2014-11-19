@@ -33,7 +33,8 @@ void Lithium::on_quitAction_triggered()
 
 void Lithium::on_addButton_clicked()
 {
-
+    MacsinFile mc(list.data(list.index(0,0),0).toString());
+    mc.add(1111,0);
 }
 
 void Lithium::on_removeButton_clicked()
@@ -48,7 +49,7 @@ MacsinFile::MacsinFile(QString path)
     if(pth.size())
     {
         file.setFileName(pth);
-        file.open(QIODevice::Text);
+        file.open(QIODevice::Text|QIODevice::ReadWrite);
         io.setDevice(&file);
     }
 }
@@ -59,13 +60,23 @@ void MacsinFile::open(QString path)
     if(pth.size())
     {
         file.setFileName(pth);
-        file.open(QIODevice::Text);
+        file.open(QIODevice::Text|QIODevice::ReadWrite);
         io.setDevice(&file);
     }
 }
 
+MacsinFile::~MacsinFile()
+{
+
+}
+
 void MacsinFile::add(int number, float conc)
 {
+    QString line;
+    while(!io.atEnd())
+    {
+        line = io.readLine();
+    }
 
 }
 
