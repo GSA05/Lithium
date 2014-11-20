@@ -46,8 +46,8 @@ void Lithium::on_removeButton_clicked()
 MacsinFile::MacsinFile(QString path)
 {
     this->open(path);
-    iztp.setPattern("  (\d{3,4})+");
-    cncr.setPattern("  (\S+e[+-]\S{2})+");
+    iztp.setPattern("  (\\d{3,4})+");
+    cncr.setPattern("  (\\S+e[+-]\\S{2})+");
 }
 
 void MacsinFile::open(QString path)
