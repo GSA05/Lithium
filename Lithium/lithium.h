@@ -5,6 +5,7 @@
 #include <QStringListModel>
 #include <QFile>
 #include <QTextStream>
+#include <QRegularExpression>
 #include "ui_lithium.h"
 
 class Lithium : public QMainWindow
@@ -39,8 +40,9 @@ public:
 
 private:
     QString pth;
-    QFile file;
-    QTextStream io;
+    QFile fileIn,fileOut;
+    QTextStream in,out;
+    QRegularExpression iztp,cncr;
 };
 
 #endif // LITHIUM_H

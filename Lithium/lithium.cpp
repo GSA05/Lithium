@@ -17,9 +17,9 @@ Lithium::~Lithium()
 
 void Lithium::on_openAction_triggered()
 {
-    QFileDialog *diag = new QFileDialog(this,tr("Open..."),currentDir,tr("Macsin Files (*.mc);;All Files (*.*)"));
+    QFileDialog *diag = new QFileDialog(this,tr("Open..."),currentDir,tr("Macsin Files (*.mc *.dat);;All Files (*.*)"));
     QStringList fileNames("");
-    if(!(fileNames = diag->getOpenFileNames(this,tr("Open..."),currentDir,tr("Macsin Files (*.mc);;All Files (*.*)"))).empty())
+    if(!(fileNames = diag->getOpenFileNames(this,tr("Open..."),currentDir,tr("Macsin Files (*.mc *.dat);;All Files (*.*)"))).empty())
     {
         currentDir = diag->directory().currentPath();
         list.setStringList(fileNames);
@@ -45,13 +45,9 @@ void Lithium::on_removeButton_clicked()
 //MacsinFile
 MacsinFile::MacsinFile(QString path)
 {
-    pth=path;
-    if(pth.size())
-    {
-        file.setFileName(pth);
-        file.open(QIODevice::Text|QIODevice::ReadWrite);
-        io.setDevice(&file);
-    }
+    this->open(path);
+    iztp.setPattern("  (\d{3,4})+");
+    cncr.setPattern("  (\S+e[+-]\S{2})+");
 }
 
 void MacsinFile::open(QString path)
@@ -59,23 +55,46 @@ void MacsinFile::open(QString path)
     pth=path;
     if(pth.size())
     {
-        file.setFileName(pth);
-        file.open(QIODevice::Text|QIODevice::ReadWrite);
-        io.setDevice(&file);
+        if(!QFile::copy(pth,pth+".bck"))
+        {
+            QFile::remove(pth+".bck");
+            QFile::copy(pth,pth+".bck");
+        }
+        fileIn.setFileName(pth+".bck");
+        fileIn.open(QIODevice::Text|QIODevice::ReadOnly);
+        in.setDevice(&fileIn);
+        fileOut.setFileName(pth);
+        fileOut.open(QIODevice::Text|QIODevice::Truncate|QIODevice::WriteOnly);
+        out.setDevice(&fileOut);
     }
 }
 
 MacsinFile::~MacsinFile()
 {
-
+    fileIn.close();
+    fileOut.close();
 }
 
 void MacsinFile::add(int number, float conc)
 {
     QString line;
-    while(!io.atEnd())
+    int c=0;
+    bool mat=false;
+    bool add=false;
+    QRegularExpressionMatchIterator remi;
+    while(!in.atEnd())
     {
-        line = io.readLine();
+        c++;
+        line = in.readLine();
+        if(c>5)
+        {
+            if((remi=iztp.globalMatch(line)).next().hasMatch())
+            {
+                mat=true;
+            }
+
+        }
+        if(!line.isEmpty()) out<<line<<endl;
     }
 
 }
