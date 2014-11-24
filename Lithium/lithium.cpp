@@ -52,7 +52,7 @@ MacsinFile::MacsinFile(QString path)
 
 void MacsinFile::open(QString path)
 {
-    pth=path;
+    pth = path;
     if(pth.size())
     {
         if(!QFile::copy(pth,pth+".bck"))
@@ -78,21 +78,38 @@ MacsinFile::~MacsinFile()
 void MacsinFile::add(int number, float conc)
 {
     QString line;
-    int c=0;
-    bool mat=false;
-    bool add=false;
-    QRegularExpressionMatchIterator remi;
+    int c = 0;
+    //bool mat = false;
+    int add = 0;
+    iztp_add.setPattern(QString(number));
+    QRegularExpressionMatch remi;
+    QRegularExpressionMatch remid;
     while(!in.atEnd())
     {
         c++;
         line = in.readLine();
         if(c>5)
         {
-            if((remi=iztp.globalMatch(line)).next().hasMatch())
+            if(add)
             {
-                mat=true;
-            }
 
+            }
+            if((remi = iztp.match(line)).hasMatch())
+            {
+                for(int i = 1;i <= remi.lastCapturedIndex(); i++)
+                {
+                    if(remi.captured(i) == QString(number))
+                    {
+                        add = i;
+                        break;
+                    }
+                }
+                if(!add)
+                {
+                    line += QString("%1").arg(number,5);
+                    add = remi.lastCapturedIndex() + 1;
+                }
+            }
         }
         if(!line.isEmpty()) out<<line<<endl;
     }

@@ -42,7 +42,7 @@ private:
     QString pth;
     QFile fileIn,fileOut;
     QTextStream in,out;
-    QRegularExpression iztp,cncr;
+    QRegularExpression iztp,cncr,iztp_add;
 };
 
 #endif // LITHIUM_H
