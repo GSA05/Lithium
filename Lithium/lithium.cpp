@@ -46,7 +46,7 @@ void Lithium::on_removeButton_clicked()
 MacsinFile::MacsinFile(QString path)
 {
     this->open(path);
-    iztp.setPattern("  (\\d{3,4})+");
+    iztp.setPattern(" \\d{3,4}");
     cncr.setPattern("  (\\S+e[+-]\\S{2})+");
 }
 
@@ -79,10 +79,11 @@ void MacsinFile::add(int number, float conc)
 {
     QString line;
     int c = 0;
+    int i = 0;
     //bool mat = false;
     int add = 0;
     iztp_add.setPattern(QString(number));
-    QRegularExpressionMatch remi;
+    QRegularExpressionMatchIterator remi;
     QRegularExpressionMatch remid;
     while(!in.atEnd())
     {
@@ -94,11 +95,14 @@ void MacsinFile::add(int number, float conc)
             {
 
             }
-            if((remi = iztp.match(line)).hasMatch())
+            if((remi = iztp.globalMatch(QRegularExpression(" ( \\d{3,4}})+").match(line).captured(0))).hasNext())
             {
-                for(int i = 1;i <= remi.lastCapturedIndex(); i++)
+                //QStringList t = remi.capturedTexts();
+                i = 0;
+                while(remi.hasNext())
                 {
-                    if(remi.captured(i) == QString(number))
+                    i++;
+                    if(remi.next().captured(0) == QString(number))
                     {
                         add = i;
                         break;
@@ -107,7 +111,7 @@ void MacsinFile::add(int number, float conc)
                 if(!add)
                 {
                     line += QString("%1").arg(number,5);
-                    add = remi.lastCapturedIndex() + 1;
+                    add = i + 1;
                 }
             }
         }
