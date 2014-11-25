@@ -13,8 +13,16 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        lithium.cpp
+        lithium.cpp \
+    unkisotop.cpp \
+    unkmaterial.cpp \
+    unkzone.cpp \
+    unkmacsin.cpp
 
-HEADERS  += lithium.h
+HEADERS  += lithium.h \
+    unkisotop.h \
+    unkmaterial.h \
+    unkzone.h \
+    unkmacsin.h
 
 FORMS    += lithium.ui
