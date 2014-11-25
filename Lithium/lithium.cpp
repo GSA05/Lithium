@@ -80,9 +80,10 @@ void MacsinFile::add(int number, float conc)
     QString line;
     int c = 0;
     int i = 0;
-    //bool mat = false;
+    bool nw = false;
     int add = 0;
     iztp_add.setPattern(QString(number));
+    QRegularExpressionMatch temp;
     QRegularExpressionMatchIterator remi;
     QRegularExpressionMatch remid;
     while(!in.atEnd())
@@ -93,18 +94,28 @@ void MacsinFile::add(int number, float conc)
         {
             if(add)
             {
-
+                if(nw)
+                {
+                    line.append(QString("%1").arg(conc,12,'e',5));
+                }
+                else
+                {
+                    line.replace((add-1)*12+1,12,QString("%1").arg(conc,12,'e',5));
+                }
+                add = 0;
             }
-            if((remi = iztp.globalMatch(QRegularExpression(" ( \\d{3,4}})+").match(line).captured(0))).hasNext())
+            temp = QRegularExpression(" ( \\d{3,4})+").match(line);
+            if((remi = iztp.globalMatch(temp.captured(0))).hasNext())
             {
                 //QStringList t = remi.capturedTexts();
                 i = 0;
                 while(remi.hasNext())
                 {
                     i++;
-                    if(remi.next().captured(0) == QString(number))
+                    if(remi.next().captured(0).trimmed() == QString(number))
                     {
                         add = i;
+                        nw = false;
                         break;
                     }
                 }
@@ -112,6 +123,7 @@ void MacsinFile::add(int number, float conc)
                 {
                     line += QString("%1").arg(number,5);
                     add = i + 1;
+                    nw = true;
                 }
             }
         }
