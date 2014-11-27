@@ -10,11 +10,18 @@ class UNKMacsin
 {
 public:
     UNKMacsin();
+    ~UNKMacsin();
+    bool load(QString path);
+    bool save();
+    bool addMaterial();
+    bool removeMaterial();
+    bool changeAllMaterials();
+    bool changeTemp();
 
 private:
     quint8 geometry;
     quint8 groups;
-    quint8 groups_t;
+    quint8 groupsT;
     quint16 pred;
     qreal albedo;
     QVector<UNKZone> zones;

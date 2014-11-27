@@ -13,6 +13,7 @@ public:
 private:
     QVector<UNKIsotop> isotopes;
     qreal temp;
+    QString comment;
 };
 
 #endif // UNKMATERIAL_H
