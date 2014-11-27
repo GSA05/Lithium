@@ -25,4 +25,5 @@ HEADERS  += lithium.h \
     unkzone.h \
     unkmacsin.h
 
-FORMS    += lithium.ui
+FORMS    += lithium.ui \
+    temp.ui

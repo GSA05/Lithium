@@ -7,6 +7,7 @@
 #include <QTextStream>
 #include <QRegularExpression>
 #include "ui_lithium.h"
+#include "ui_temp.h"
 
 class Lithium : public QMainWindow
 {
@@ -21,9 +22,12 @@ private slots:
     void on_quitAction_triggered();
     void on_addButton_clicked();
     void on_removeButton_clicked();
+    void on_tempButton_clicked();
 
 private:
 	Ui::LithiumClass ui;
+    Ui::Dialog uiDialog;
+    QDialog tempDialog;
     QString currentDir;
     QStringListModel list;
 };
@@ -37,6 +41,7 @@ public:
     void close(); // закрывает файл
     void add(int number, float conc); // добавляет изотоп в материалы с заданной концентрацией
     void remove(int number); // убирает изотоп из материалов
+    void changeTemp(float temp, QString pattern); // меняет температуру материалов
 
 private:
     QString pth;

@@ -8,6 +8,8 @@ Lithium::Lithium(QWidget *parent)
 	ui.setupUi(this);
     currentDir = QString();
     ui.listView->setModel(&list);
+
+    uiDialog.setupUi(&tempDialog);
 }
 
 Lithium::~Lithium()
@@ -23,6 +25,7 @@ void Lithium::on_openAction_triggered()
     {
         currentDir = diag->directory().currentPath();
         list.setStringList(fileNames);
+        ui.tempButton->setEnabled(true);
     }
 }
 
@@ -40,6 +43,18 @@ void Lithium::on_addButton_clicked()
 void Lithium::on_removeButton_clicked()
 {
 
+}
+
+void Lithium::on_tempButton_clicked()
+{
+    if(tempDialog.exec())
+    {
+        for(int i = 0; i <= list.rowCount(); i++)
+        {
+            MacsinFile mc(list.data(list.index(i,0),0).toString());
+            mc.changeTemp(uiDialog.tempEdit->text().toFloat(),uiDialog.checkBox->isChecked() ? "*" : uiDialog.izotEdit->text());
+        }
+    }
 }
 
 //MacsinFile
@@ -135,4 +150,46 @@ void MacsinFile::add(int number, float conc)
 void MacsinFile::remove(int number)
 {
 
+}
+
+
+void MacsinFile::changeTemp(float temp, QString pattern)
+{
+    QString line,lineBefore;
+    int c = 0;
+    int i = 0;
+    int n = 0;
+    bool change = false;
+    if(pattern == "*")
+    {
+        while(!in.atEnd())
+        {
+            c++;
+            lineBefore = line;
+            line = in.readLine();
+            if(c>5)
+            {
+                if(change)
+                {
+                    i++;
+                    if(i == n)
+                    {
+                        line.replace(1,12,QString("%1").arg(temp,12,'e',5));
+                        i = 0;
+                        change = false;
+                    }
+                }
+                if(!change && QRegularExpression(" ( \\d{3,4})+").match(line).hasMatch())
+                {
+                    change = true;
+                    n = 3 + (lineBefore.mid(5,3).trimmed().toInt() > 0 ? 1 : 0) * 2;
+                }
+            }
+            if(!line.isEmpty()) out<<line<<endl;
+        }
+    }
+    else
+    {
+
+    }
 }
