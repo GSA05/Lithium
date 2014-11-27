@@ -68,14 +68,20 @@ MacsinFile::MacsinFile(QString path)
 void MacsinFile::open(QString path)
 {
     pth = path;
+    QDir dir("./bck");
+    QString name = QFileInfo(pth).fileName();
     if(pth.size())
     {
-        if(!QFile::copy(pth,pth+".bck"))
+        if(!dir.exists())
         {
-            QFile::remove(pth+".bck");
-            QFile::copy(pth,pth+".bck");
+            QDir::current().mkdir("bck");
         }
-        fileIn.setFileName(pth+".bck");
+        if(!QFile::copy(pth,dir.absoluteFilePath(name)))
+        {
+            QFile::remove(dir.absoluteFilePath(name));
+            QFile::copy(pth,dir.absoluteFilePath(name));
+        }
+        fileIn.setFileName(dir.absoluteFilePath(name));
         fileIn.open(QIODevice::Text|QIODevice::ReadOnly);
         in.setDevice(&fileIn);
         fileOut.setFileName(pth);
