@@ -9,18 +9,19 @@ int5        [[:digit:]]{3,5}
 float12		-?[[:digit:]]"."[[:digit:]]{5}[eE][+-][[:digit:]]{2}	
 comment		[^[:space:]][^{int3}{int5}{float12}]+$
 
-%x row1 row2 row3 row4
+%x row1 row2 row3 row4 row5
 
 %%
                     int line_num = 1;
                     BEGIN(row1);
                     char buf[20];
 
-<row1>{int3}	            printf("%d ",atoi(yytext));
+<row1,row4>{int3}	        printf("%d ",atoi(yytext));
+<row2,row3>{float12}		printf("%g ",atof(yytext));
 <row1>"\n"		            ++line_num; printf("\n"); BEGIN(row2);
 <row2>"\n"		            ++line_num; printf("\n"); BEGIN(row3);
 <row3>"\n"		            ++line_num; printf("\n"); BEGIN(row4);
-<row2,row3>{float12}		printf("%g ",atof(yytext));
+<row4>"\n"		            ++line_num; printf("\n"); BEGIN(row5);
 <INITIAL>{int5}				printf("%d\n",atoi(yytext));
 <INITIAL>[[:space:]]+ 
 % //{comment}		        printf("%s\n",yytext);
