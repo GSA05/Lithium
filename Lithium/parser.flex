@@ -13,6 +13,7 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
 
 %%
                     int line_num = 1;
+                    int line_num_prev = 0;
                     BEGIN(row1);
                     char buf[20];
                     int i = 0;
@@ -26,8 +27,11 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
 <row4>"\n"		            ++line_num; printf("\n"); BEGIN(row5);
 <row5>"\n"		            ++line_num; printf("\n"); i = 0; BEGIN(material);
 <material>{int3}            nums[i] = atoi(yytext); printf("%d ",nums[i++]); if(i == 2) BEGIN(comment);
-<comment>.+"\n"             printf("\n"); printf("%s\n",yytext); BEGIN(isotopes);
-<INITIAL>{int5}				printf("%d\n",atoi(yytext));
+<comment>.*"\n"             ++line_num; printf("\n"); printf("%s",yytext); i = 0; BEGIN(isotopes);
+<isotopes>{
+    {int5}                  printf("%d ",atoi(yytext)); if(++i == nums[0] ) { ++line_num; printf("\n");  BEGIN(concentrations); }
+    "\n"                    line_num_prev = line_num++;
+}
 <INITIAL>[[:space:]]+ 
 <<EOF>>                     printf("%d\n",line_num); yyterminate();
 <*>.|"\n"
