@@ -29,7 +29,11 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
 <material>{int3}            nums[i] = atoi(yytext); printf("%d ",nums[i++]); if(i == 2) BEGIN(comment);
 <comment>.*"\n"             ++line_num; printf("\n"); printf("%s",yytext); i = 0; BEGIN(isotopes);
 <isotopes>{
-    {int5}                  printf("%d ",atoi(yytext)); if(++i == nums[0] ) { ++line_num; printf("\n");  BEGIN(concentrations); }
+    {int5}                  printf("%d ",atoi(yytext)); if(++i == nums[0] ) { ++line_num; printf("\n"); i = 0; BEGIN(concentrations); }
+    "\n"                    line_num_prev = line_num++;
+}
+<concentrations>{
+    {float12}               printf("%g ",atof(yytext)); if(++i == nums[0] ) { ++line_num; printf("\n"); i = 0; BEGIN(models); }
     "\n"                    line_num_prev = line_num++;
 }
 <INITIAL>[[:space:]]+ 
