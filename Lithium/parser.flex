@@ -32,28 +32,28 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
 <material>{int3}                        nums[i] = atoi(yytext); printf("%d ",nums[i++]); if(i == 2) BEGIN(comment);
 <comment>.*"\n"                         ++line_num; printf("\n"); printf("%s",yytext); i = 0; BEGIN(isotopes);
 <isotopes>{
-    {int5}                              printf("%d ",atoi(yytext)); ++i;
-    "\n"                                line_num_prev = line_num++; if(i == nums[0] ) { printf("\n"); i = 0; BEGIN(concentrations); }
+    {int5}                              printf("%d ",atoi(yytext)); i++;
+    "\n"                                line_num_prev = line_num++; if(i == nums[0]) { printf("\n"); i = 0; BEGIN(concentrations); }
 }
 <concentrations>{
-    {float12}                           printf("%g ",atof(yytext)); if(++i == nums[0] ) { ++line_num; printf("\n"); i = 0; BEGIN(models); }
-    "\n"                                if(i != 0) line_num_prev = line_num++;
+    {float12}                           printf("%g ",atof(yytext)); i++;
+    "\n"                                line_num_prev = line_num++; if(i == nums[0]) { printf("\n"); i = 0; BEGIN(models); }
 }
 <models>{
-    {int3}                              printf("%d ",atoi(yytext)); if(++i == nums[0] ) { ++line_num; printf("\n"); i = 0; if(nums[1]) BEGIN(isotopes_t); else BEGIN(temperature); }
-    "\n"                                if(i != 0) line_num_prev = line_num++;
+    {int3}                              printf("%d ",atoi(yytext)); i++;
+    "\n"                                line_num_prev = line_num++; if(i == nums[0]) { printf("\n"); i = 0; if(nums[1]) BEGIN(isotopes_t); else BEGIN(temperature); }
 }
 <isotopes_t>{
-    {int5}                              printf("%d ",atoi(yytext)); if(++i == nums[1] ) { ++line_num; printf("\n"); i = 0; BEGIN(concentrations_t); }
-    "\n"                                line_num_prev = line_num++;
+    {int5}                              printf("%d ",atoi(yytext)); i++;
+    "\n"                                line_num_prev = line_num++; if(i == nums[1]) { printf("\n"); i = 0; BEGIN(concentrations_t); }
 }
 <concentrations_t>{
-    {float12}                           printf("%g ",atof(yytext)); if(++i == nums[1] ) { ++line_num; printf("\n"); i = 0; BEGIN(temperature); }
-    "\n"                                if(i != 0) line_num_prev = line_num++;
+    {float12}                           printf("%g ",atof(yytext)); i++;
+    "\n"                                line_num_prev = line_num++; if(i == nums[1]) { printf("\n"); i = 0; BEGIN(temperature); }
 }
 <groups>{
     {int3}                              printf("%d ",atoi(yytext)); if(j++ == 0) { num_group = atoi(yytext); printf("\n"); }
-    "\n"                                if(j != 0) { ++line_num; if(num_group) printf("\n"); }; if(++i == nums[0]) { ++line_num; i = 0; BEGIN(material); } else j = 0;
+    "\n"                                if(j != 0) { ++line_num; if(num_group) printf("\n"); }; if(++i == nums[0]) { i = 0; BEGIN(material); } else j = 0;
 }
 <INITIAL>[[:space:]]+ 
 <<EOF>>                                 printf("%d\n",line_num); yyterminate();

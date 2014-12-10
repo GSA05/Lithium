@@ -874,65 +874,65 @@ YY_RULE_SETUP
 case 11:
 YY_RULE_SETUP
 #line 35 "parser.flex"
-printf("%d ",atoi(yytext)); if(++i == nums[0] ) { ++line_num; printf("\n"); i = 0; BEGIN(concentrations); }
+printf("%d ",atoi(yytext)); i++;
 	YY_BREAK
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
 #line 36 "parser.flex"
-line_num_prev = line_num++;
+line_num_prev = line_num++; if(i == nums[0]) { printf("\n"); i = 0; BEGIN(concentrations); }
 	YY_BREAK
 
 
 case 13:
 YY_RULE_SETUP
 #line 39 "parser.flex"
-printf("%g ",atof(yytext)); if(++i == nums[0] ) { ++line_num; printf("\n"); i = 0; BEGIN(models); }
+printf("%g ",atof(yytext)); i++;
 	YY_BREAK
 case 14:
 /* rule 14 can match eol */
 YY_RULE_SETUP
 #line 40 "parser.flex"
-if(i != 0) line_num_prev = line_num++;
+line_num_prev = line_num++; if(i == nums[0]) { printf("\n"); i = 0; BEGIN(models); }
 	YY_BREAK
 
 
 case 15:
 YY_RULE_SETUP
 #line 43 "parser.flex"
-printf("%d ",atoi(yytext)); if(++i == nums[0] ) { ++line_num; printf("\n"); i = 0; if(nums[1]) BEGIN(isotopes_t); else BEGIN(temperature); }
+printf("%d ",atoi(yytext)); i++;
 	YY_BREAK
 case 16:
 /* rule 16 can match eol */
 YY_RULE_SETUP
 #line 44 "parser.flex"
-if(i != 0) line_num_prev = line_num++;
+line_num_prev = line_num++; if(i == nums[0]) { printf("\n"); i = 0; if(nums[1]) BEGIN(isotopes_t); else BEGIN(temperature); }
 	YY_BREAK
 
 
 case 17:
 YY_RULE_SETUP
 #line 47 "parser.flex"
-printf("%d ",atoi(yytext)); if(++i == nums[1] ) { ++line_num; printf("\n"); i = 0; BEGIN(concentrations_t); }
+printf("%d ",atoi(yytext)); i++;
 	YY_BREAK
 case 18:
 /* rule 18 can match eol */
 YY_RULE_SETUP
 #line 48 "parser.flex"
-line_num_prev = line_num++;
+line_num_prev = line_num++; if(i == nums[1]) { printf("\n"); i = 0; BEGIN(concentrations_t); }
 	YY_BREAK
 
 
 case 19:
 YY_RULE_SETUP
 #line 51 "parser.flex"
-printf("%g ",atof(yytext)); if(++i == nums[1] ) { ++line_num; printf("\n"); i = 0; BEGIN(temperature); }
+printf("%g ",atof(yytext)); i++;
 	YY_BREAK
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
 #line 52 "parser.flex"
-if(i != 0) line_num_prev = line_num++;
+line_num_prev = line_num++; if(i == nums[1]) { printf("\n"); i = 0; BEGIN(temperature); }
 	YY_BREAK
 
 
@@ -945,7 +945,7 @@ case 22:
 /* rule 22 can match eol */
 YY_RULE_SETUP
 #line 56 "parser.flex"
-if(j != 0) { ++line_num; if(num_group) printf("\n"); }; if(++i == nums[0]) { ++line_num; i = 0; BEGIN(material); } else j = 0;
+if(j != 0) { ++line_num; if(num_group) printf("\n"); }; if(++i == nums[0]) { i = 0; BEGIN(material); } else j = 0;
 	YY_BREAK
 
 case 23:
