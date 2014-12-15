@@ -3,6 +3,7 @@
 
 #include <QtGlobal>
 #include <QVector>
+#include <QString>
 #include <unkisotop.h>
 
 class UNKMaterial

@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     unkisotop.cpp \
     unkmaterial.cpp \
     unkzone.cpp \
-    unkmacsin.cpp
+    unkmacsin.cpp \
+    lex.yy.c
 
 HEADERS  += lithium.h \
     unkisotop.h \

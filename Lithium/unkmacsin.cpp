@@ -14,7 +14,7 @@ UNKMacsin::~UNKMacsin()
 
 }
 
-UNKMacsin::load(QFileInfo path)
+bool UNKMacsin::load(QFileInfo path)
 {
     QFile file(path.absoluteFilePath());
     file.open(QIODevice::Text|QIODevice::ReadOnly);

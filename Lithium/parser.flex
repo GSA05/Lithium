@@ -61,7 +61,7 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
 
 %%
 
-main(int argc, char **argv)
+/*main(int argc, char **argv)
 {
 	++argv; --argc;
 	if(argc>0)
@@ -73,4 +73,4 @@ main(int argc, char **argv)
 		yyin = stdin;
 	}
 	yylex();
-}
+}*/

@@ -3,6 +3,7 @@
 
 #include <QtGlobal>
 #include <QVector>
+#include <QFileInfo>
 #include <unkzone.h>
 #include <unkmaterial.h>
 
@@ -11,7 +12,7 @@ class UNKMacsin
 public:
     UNKMacsin();
     ~UNKMacsin();
-    bool load(QString path);
+    bool load(QFileInfo path);
     bool save();
     bool addMaterial();
     bool removeMaterial();
