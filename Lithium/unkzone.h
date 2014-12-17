@@ -7,11 +7,15 @@
 class UNKZone
 {
 public:
-    UNKZone(UNKMaterial *mat);
+    UNKZone();
+    UNKZone(qreal rad, quint16 mat, bool noth);
+    qreal getRadius();
+    quint16 getMaterial();
+    bool getNothing();
 
 private:
     qreal radius;
-    UNKMaterial* material;
+    quint16 material;
     bool nothing;
 };
 
