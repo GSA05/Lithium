@@ -4,3 +4,101 @@ UNKMaterial::UNKMaterial()
 {
     isotopes = QVector<UNKIsotop>();
 }
+
+UNKMaterial::UNKMaterial(QVector<UNKIsotop> iso, qreal tem, QString com)
+{
+    isotopes = QVector<UNKIsotop>(iso);
+    temp = tem;
+    comment = com;
+}
+
+QVector<UNKIsotop> UNKMaterial::getIsotopes()
+{
+    return isotopes;
+}
+
+qreal UNKMaterial::getTemp()
+{
+    return temp;
+}
+
+QString UNKMaterial::getComment()
+{
+    return comment;
+}
+
+QString UNKMaterial::save()
+{
+    QString ans;
+    quint16 num_t = 0;
+    QVector<UNKIsotop>::iterator i;
+    quint16 j = 0;
+    ans += isotopes.size() + ' ';
+    for(i = isotopes.begin(); i != isotopes.end(); ++i)
+        num_t += i->getModel();
+    ans += num_t + ' ' + comment + '\n';
+    for(i = isotopes.begin(); i != isotopes.end(); ++i)
+    {
+        ans += QString("%1").arg(i->getNumber(),5);
+        if(++j == 10)
+        {
+            ans += '\n';
+            j = 0;
+        }
+    }
+    if(j > 0) ans += '\n';
+    j = 0;
+    for(i = isotopes.begin(); i != isotopes.end(); ++i)
+    {
+        ans += QString("%1").arg(i->getConcer(),12,'e',5);
+        if(++j == 10)
+        {
+            ans += '\n';
+            j = 0;
+        }
+    }
+    if(j > 0) ans += '\n';
+    j = 0;
+    for(i = isotopes.begin(); i != isotopes.end(); ++i)
+    {
+        ans += QString("%1").arg(i->getModel(),3);
+        if(++j == 10)
+        {
+            ans += '\n';
+            j = 0;
+        }
+    }
+    if(j > 0) ans += '\n';
+    j = 0;
+    for(i = isotopes.begin(); i != isotopes.end(); ++i)
+    {
+        if(i->getModel())
+        {
+            ans += QString("%1").arg(i->getNumber_t(),5);
+            if(++j == 10)
+            {
+                ans += '\n';
+                j = 0;
+            }
+        }
+    }
+    if(j > 0) ans += '\n';
+    j = 0;
+    for(i = isotopes.begin(); i != isotopes.end(); ++i)
+    {
+        if(i->getModel())
+        {
+            ans += QString("%1").arg(i->getConcer(),12,'e',5);
+            if(++j == 10)
+            {
+                ans += '\n';
+                j = 0;
+            }
+        }
+    }
+    if(j > 0) ans += '\n';
+    ans += QString("%1").arg(temp,12,'e',5) + '\n';
+    for(i = isotopes.begin(); i != isotopes.end(); ++i)
+        ans += i->getMics().save();
+    return ans;
+}
