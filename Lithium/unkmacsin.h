@@ -12,8 +12,15 @@ class UNKMacsin
 public:
     UNKMacsin();
     ~UNKMacsin();
+    quint8 getGeometry();
+    quint8 getGroups();
+    quint8 getGroupsT();
+    quint16 getPred();
+    qreal getAlbedo();
+    QVector<UNKZone> getZones();
+    QVector<UNKMaterial> getMaterials();
     bool load(QFileInfo path);
-    bool save();
+    bool save(QFileInfo path);
     bool addMaterial();
     bool removeMaterial();
     bool changeAllMaterials();
