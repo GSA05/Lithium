@@ -1,11 +1,15 @@
 #include "unkmacsin.h"
+#include "FlexLexer.h"
 #include <QFile>
 #include <QDir>
 #include <QFileInfo>
 #include <QTextStream>
+#include <fstream>
 
-extern FILE *yyin, *yyout;
-extern "C" int yylex();
+//extern FILE *yyin, *yyout;
+//extern "C" int yylex();
+//extern "C++" class FlexLexer;
+//extern "C++" class parserFlexLexer;
 
 UNKMacsin::UNKMacsin()
 {
@@ -55,17 +59,26 @@ QVector<UNKMaterial> UNKMacsin::getMaterials()
 
 bool UNKMacsin::load(QFileInfo path)
 {
-    yyin = fopen(path.absoluteFilePath().toUtf8().constData(),"r");
-    FILE *out;
-    yyout = out;//fopen((QString(path.absoluteDir().path()) + "raw.dat").toUtf8().constData(),"w");
-    yylex();
+    std::ifstream file;
+    file.open(path.absoluteFilePath().toStdString().c_str());
+    std::ofstream tmp;
+    tmp.open((path.absoluteFilePath()+".tmp").toStdString().c_str());
+    FlexLexer* lexer = new yyFlexLexer;
+    lexer->yylex(&file,&tmp);
+    tmp.flush();
+    file.close();
+    tmp.close();
+    //yyin = fopen(path.absoluteFilePath().toUtf8().constData(),"r");
+    //FILE *out;
+    //yyout = out;//fopen((QString(path.absoluteDir().path()) + "raw.dat").toUtf8().constData(),"w");
+    //yylex();
     //QFile file(path.absoluteDir().path() + "raw.dat");
     //file.open(QIODevice::Text|QIODevice::ReadOnly);
-    QTextStream in(out);
+    //QTextStream in(out);
     quint16 geom,num_z,groups,groupsT,num_m,pred;
     qreal alb;
-    in>>geom>>num_z>>groups>>groupsT>>num_m>>pred;
-    in>>alb;
+    //in>>geom>>num_z>>groups>>groupsT>>num_m>>pred;
+    //in>>alb;
     //file.close();
     return true;
 }

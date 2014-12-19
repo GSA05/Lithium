@@ -1,4 +1,5 @@
 #include "lithium.h"
+#include "unkmacsin.h"
 #include <QFileDialog>
 
 //Lithium
@@ -51,8 +52,10 @@ void Lithium::on_tempButton_clicked()
     {
         for(int i = 0; i <= list.rowCount(); i++)
         {
-            MacsinFile mc(list.data(list.index(i,0),0).toString());
-            mc.changeTemp(uiDialog.tempEdit->text().toFloat(),uiDialog.checkBox->isChecked() ? "*" : uiDialog.izotEdit->text());
+            //MacsinFile mc(list.data(list.index(i,0),0).toString());
+            UNKMacsin mac;
+            mac.load(QFileInfo(list.data(list.index(i,0),0).toString()));
+            //mc.changeTemp(uiDialog.tempEdit->text().toFloat(),uiDialog.checkBox->isChecked() ? "*" : uiDialog.izotEdit->text());
         }
     }
 }

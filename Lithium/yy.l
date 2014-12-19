@@ -1,8 +1,10 @@
-%option noyywrap
-
 %{
 #include <math.h>
 %}
+
+%option noyywrap
+%option c++
+%option outfile="lex.yy.c"
 
 int3        [[:digit:]]{1,3}
 int5        [[:digit:]]{3,5}
@@ -56,7 +58,7 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
     "\n"                                if(j != 0) { ++line_num; if(num_group) printf("\n"); }; if(++i == nums[0]) { i = 0; BEGIN(material); } else j = 0;
 }
 <INITIAL>[[:space:]]+ 
-<<EOF>>                                 printf("%d\n",line_num); yyterminate();
+<<EOF>>                                 /*printf("%d\n",line_num);*/ yyterminate();
 <*>.|"\n"
 
 %%

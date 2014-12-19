@@ -17,14 +17,15 @@ SOURCES += main.cpp\
     unkisotop.cpp \
     unkmaterial.cpp \
     unkzone.cpp \
-    unkmacsin.cpp \
-    lex.yy.c
+    unkmacsin.cpp
 
 HEADERS  += lithium.h \
     unkisotop.h \
     unkmaterial.h \
     unkzone.h \
-    unkmacsin.h
+    unkmacsin.h \
+    FlexLexer.h \
+    yy.l
 
 FORMS    += lithium.ui \
     temp.ui
