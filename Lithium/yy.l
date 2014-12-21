@@ -1,5 +1,7 @@
 %{
 #include <math.h>
+extern "C++" class QTextStream;
+#define YY_DECL int yyFlexLexer::yylex(QTextStream* s)
 %}
 
 %option noyywrap
@@ -23,7 +25,7 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
                     int nums[2];
                     int num_group;
 
-<row1,row4,row5>{int3}	                printf("%d ",atoi(yytext));
+<row1,row4,row5>{int3}	                printf("%d ",atoi(yytext)); yyout->write(YYText());
 <row2,row3,temperature>{float12}		printf("%g ",atof(yytext)); i++;
 <row1>"\n"		                        ++line_num; printf("\n"); BEGIN(row2);
 <row2>"\n"		                        ++line_num; printf("\n"); BEGIN(row3);
