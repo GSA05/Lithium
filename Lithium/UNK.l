@@ -29,6 +29,7 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
                                                 s->setGeometry(atoi(yytext));
                                                 break;
                                             case 2:
+                                                s->setZones(atoi(yytext));
                                                 break;
                                             case 3:
                                                 s->setGroups(atoi(yytext));
@@ -37,22 +38,31 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
                                                 s->setGroupsT(atoi(yytext));
                                                 break;
                                             case 5:
+                                                s->setMaterials(atoi(yytext));
                                                 break;
                                             case 6:
                                                 s->setPred(atoi(yytext));
                                                 break;
                                         }
-    "\n"		                        ++line_num; printf("\n"); BEGIN(row2);
+    "\n"		                        ++line_num; printf("\n"); i = 0; BEGIN(row2);
 }
 <row2>{
     {float12}                           s->setAlbedo(atoi(yytext));
     "\n"                                ++line_num; printf("\n"); BEGIN(row3);
 }
-<row4,row5>{int3}                       s->setGeometry(atoi(yytext));
-<row3,temperature>{float12}             printf("%g ",atof(yytext)); i++;
-<row3>"\n"		                        ++line_num; printf("\n"); BEGIN(row4);
-<row4>"\n"		                        ++line_num; printf("\n"); BEGIN(row5);
-<row5>"\n"	                            ++line_num; printf("\n"); i = 0; BEGIN(material);
+<row3>{
+    {float12}                           s->getZones()->operator[](i++).setRadius(atof(yytext));
+    "\n"		                        ++line_num; printf("\n"); i = 0; BEGIN(row4);
+}
+<row4>{
+    {int3}                              s->getZones()->operator[](i++).setMaterial(atoi(yytext));
+    "\n"		                        ++line_num; printf("\n"); i = 0; BEGIN(row5);
+}
+<row5>{
+    {int3}                              s->getZones()->operator[](i++).setNothing(atoi(yytext));
+    "\n"	                            ++line_num; printf("\n"); i = 0; BEGIN(material);
+}
+<temperature>{float12}                  printf("%g ",atof(yytext)); i++;
 <temperature>"\n"	                    if(i != 0) { ++line_num; printf("\n"); i = 0; j = 0; BEGIN(groups); }
 <material>{int3}                        nums[i] = atoi(yytext); printf("%d ",nums[i++]); if(i == 2) BEGIN(comment);
 <comment>.*"\n"                         ++line_num; printf("\n"); printf("%s",yytext); i = 0; BEGIN(isotopes);

@@ -72,14 +72,24 @@ void UNKMacsin::setAlbedo(qreal in)
     albedo = in;
 }
 
-QVector<UNKZone> UNKMacsin::getZones()
+QVector<UNKZone>* UNKMacsin::getZones()
 {
-    return zones;
+    return &zones;
 }
 
-QVector<UNKMaterial> UNKMacsin::getMaterials()
+void UNKMacsin::setZones(quint8 num)
 {
-    return materials;
+    zones = QVector<UNKZone>(num,UNKZone(0,0,0));
+}
+
+QVector<UNKMaterial>* UNKMacsin::getMaterials()
+{
+    return &materials;
+}
+
+void UNKMacsin::setMaterials(quint8 num)
+{
+    materials = QVector<UNKMaterial>(num,UNKMaterial(QVector<UNKIsotop>(),0,""));
 }
 
 bool UNKMacsin::load(QFileInfo path)
@@ -98,8 +108,9 @@ bool UNKMacsin::save(QFileInfo path)
     QFile file(path.absoluteFilePath());
     file.open(QIODevice::Text|QIODevice::WriteOnly);
     QTextStream out(&file);
-    out<<QString(" %1%2%3%4%5%6\n").arg(geometry,3).arg(zones.size(),3).arg(groups,3).arg(groupsT,3).arg(materials.size(),3).arg(pred,3);
-    out<<QString("%1\n").arg(albedo,12,'e',5);
+    out<<QString("  %1%2%3%4%5%6\n").arg(geometry,3).arg(zones.size(),3).arg(groups,3).arg(groupsT,3).arg(materials.size(),3).arg(pred,3);
+    out<<QString(" %1\n").arg(albedo,12,'e',5);
+    out<<" ";
     QVector<UNKZone>::iterator i;
     int j = 0;
     for(i = zones.begin(); i != zones.end(); ++i)
@@ -112,6 +123,7 @@ bool UNKMacsin::save(QFileInfo path)
         }
     }
     if(j > 0) out<<endl;
+    out<<"  ";
     j = 0;
     for(i = zones.begin(); i != zones.end(); ++i)
     {
@@ -123,6 +135,7 @@ bool UNKMacsin::save(QFileInfo path)
         }
     }
     if(j > 0) out<<endl;
+    out<<"  ";
     j = 0;
     for(i = zones.begin(); i != zones.end(); ++i)
     {

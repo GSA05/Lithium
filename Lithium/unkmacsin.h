@@ -22,8 +22,10 @@ public:
     void setPred(quint16);
     qreal getAlbedo();
     void setAlbedo(qreal);
-    QVector<UNKZone> getZones();
-    QVector<UNKMaterial> getMaterials();
+    QVector<UNKZone>* getZones();
+    void setZones(quint8 num);
+    QVector<UNKMaterial>* getMaterials();
+    void setMaterials(quint8 num);
     bool load(QFileInfo path);
     bool save(QFileInfo path);
     bool addMaterial();
