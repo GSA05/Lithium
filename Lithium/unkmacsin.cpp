@@ -89,6 +89,7 @@ bool UNKMacsin::load(QFileInfo path)
     UNKMacsinScanner* lexer = new UNKMacsinScanner(&file);
     lexer->lex(this);
     file.close();
+    this->save(path.absoluteFilePath()+".tmp");
     return true;
 }
 
@@ -97,7 +98,7 @@ bool UNKMacsin::save(QFileInfo path)
     QFile file(path.absoluteFilePath());
     file.open(QIODevice::Text|QIODevice::WriteOnly);
     QTextStream out(&file);
-    out<<QString("%1%2%3%4%5%6\n").arg(geometry,3).arg(zones.size(),3).arg(groups,3).arg(groupsT,3).arg(materials.size(),3).arg(pred,3);
+    out<<QString(" %1%2%3%4%5%6\n").arg(geometry,3).arg(zones.size(),3).arg(groups,3).arg(groupsT,3).arg(materials.size(),3).arg(pred,3);
     out<<QString("%1\n").arg(albedo,12,'e',5);
     QVector<UNKZone>::iterator i;
     int j = 0;

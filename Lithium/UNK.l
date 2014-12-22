@@ -23,10 +23,33 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
                     int nums[2];
                     int num_group;
 
-<row1,row4,row5>{int3}	                printf("%d ",atoi(yytext)); s->setGeometry(atoi(yytext));
-<row2,row3,temperature>{float12}		printf("%g ",atof(yytext)); i++;
-<row1>"\n"		                        ++line_num; printf("\n"); BEGIN(row2);
-<row2>"\n"		                        ++line_num; printf("\n"); BEGIN(row3);
+<row1>{
+    {int3}                              switch(++i){
+                                            case 1:
+                                                s->setGeometry(atoi(yytext));
+                                                break;
+                                            case 2:
+                                                break;
+                                            case 3:
+                                                s->setGroups(atoi(yytext));
+                                                break;
+                                            case 4:
+                                                s->setGroupsT(atoi(yytext));
+                                                break;
+                                            case 5:
+                                                break;
+                                            case 6:
+                                                s->setPred(atoi(yytext));
+                                                break;
+                                        }
+    "\n"		                        ++line_num; printf("\n"); BEGIN(row2);
+}
+<row2>{
+    {float12}                           s->setAlbedo(atoi(yytext));
+    <row2>"\n"                          ++line_num; printf("\n"); BEGIN(row3);
+}
+<row4,row5>{int3}                       s->setGeometry(atoi(yytext));
+<row3,temperature>{float12}             printf("%g ",atof(yytext)); i++;
 <row3>"\n"		                        ++line_num; printf("\n"); BEGIN(row4);
 <row4>"\n"		                        ++line_num; printf("\n"); BEGIN(row5);
 <row5>"\n"	                            ++line_num; printf("\n"); i = 0; BEGIN(material);

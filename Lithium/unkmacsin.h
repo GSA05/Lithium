@@ -4,7 +4,6 @@
 #include <QtGlobal>
 #include <QVector>
 #include <QFileInfo>
-#include <QTextStream>
 #include <unkzone.h>
 #include <unkmaterial.h>
 
