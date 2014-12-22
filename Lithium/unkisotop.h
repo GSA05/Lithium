@@ -21,7 +21,7 @@ class UNKIsotop
 {
 public:
     UNKIsotop();
-    UNKIsotop(quint16 num, qreal con, bool mod, QVector<quint8> grp);
+    UNKIsotop(quint16 num, qreal con, bool mod, UNKMics mic);
     int addT(quint16 num_t);
     quint16 getNumber();
     qreal getConcer();

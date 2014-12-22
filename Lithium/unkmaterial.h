@@ -11,9 +11,12 @@ class UNKMaterial
 public:
     UNKMaterial();
     UNKMaterial(QVector<UNKIsotop> iso, qreal tem, QString com);
-    QVector<UNKIsotop> getIsotopes();
+    QVector<UNKIsotop>* getIsotopes();
+    void setIsotopes(int num);
     qreal getTemp();
+    void setTemp(qreal in);
     QString getComment();
+    void setComment(QString in);
     QString save();
 
 private:

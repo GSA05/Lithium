@@ -22,6 +22,7 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
                     int j = 0;
                     int nums[2];
                     int num_group;
+                    int mat = 0;
 
 <row1>{
     {int3}                              switch(++i){
@@ -62,10 +63,19 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
     {int3}                              s->getZones()->operator[](i++).setNothing(atoi(yytext));
     "\n"	                            ++line_num; printf("\n"); i = 0; BEGIN(material);
 }
-<temperature>{float12}                  printf("%g ",atof(yytext)); i++;
-<temperature>"\n"	                    if(i != 0) { ++line_num; printf("\n"); i = 0; j = 0; BEGIN(groups); }
-<material>{int3}                        nums[i] = atoi(yytext); printf("%d ",nums[i++]); if(i == 2) BEGIN(comment);
-<comment>.*"\n"                         ++line_num; printf("\n"); printf("%s",yytext); i = 0; BEGIN(isotopes);
+<material>{int3}                        {
+                                            switch(i){
+                                                case 0:
+                                                    nums[i++] = atoi(yytext);
+                                                    s->getMaterials()->operator[](mat).setIsotopes(nums[0]);
+                                                    break;
+                                                case 1:
+                                                    nums[i++] = atoi(yytext);
+                                                    break;
+                                            }
+                                            if(i == 2) BEGIN(comment);
+                                        }
+<comment>.*"\n"                         ++line_num; printf("\n"); s->getMaterials()->operator[](mat++).setComment(yytext); i = 0; BEGIN(isotopes);
 <isotopes>{
     {int5}                              printf("%d ",atoi(yytext)); i++;
     "\n"                                line_num_prev = line_num++; if(i == nums[0]) { printf("\n"); i = 0; BEGIN(concentrations); }
@@ -85,6 +95,10 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
 <concentrations_t>{
     {float12}                           printf("%g ",atof(yytext)); i++;
     "\n"                                line_num_prev = line_num++; if(i == nums[1]) { printf("\n"); i = 0; BEGIN(temperature); }
+}
+<temperature>{
+    {float12}                           printf("%g ",atof(yytext)); i++;
+    "\n"                                if(i != 0) { ++line_num; printf("\n"); i = 0; j = 0; BEGIN(groups); }
 }
 <groups>{
     {int3}                              printf("%d ",atoi(yytext)); if(j++ == 0) { num_group = atoi(yytext); printf("\n"); }

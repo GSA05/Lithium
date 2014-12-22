@@ -31,12 +31,12 @@ UNKIsotop::UNKIsotop()
 {
 }
 
-UNKIsotop::UNKIsotop(quint16 num, qreal con, bool mod, QVector<quint8> grp)
+UNKIsotop::UNKIsotop(quint16 num, qreal con, bool mod, UNKMics mic)
 {
     number = num;
     concer = con;
     model = mod;
-    mics = UNKMics(grp);
+    mics = mic;
 }
 
 int UNKIsotop::addT(quint16 num_t)

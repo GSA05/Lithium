@@ -12,9 +12,14 @@ UNKMaterial::UNKMaterial(QVector<UNKIsotop> iso, qreal tem, QString com)
     comment = com;
 }
 
-QVector<UNKIsotop> UNKMaterial::getIsotopes()
+QVector<UNKIsotop>* UNKMaterial::getIsotopes()
 {
-    return isotopes;
+    return &isotopes;
+}
+
+void UNKMaterial::setIsotopes(int num)
+{
+    isotopes = QVector<UNKIsotop>(num,UNKIsotop(0,0,false,UNKMics()));
 }
 
 qreal UNKMaterial::getTemp()
@@ -22,9 +27,19 @@ qreal UNKMaterial::getTemp()
     return temp;
 }
 
+void UNKMaterial::setTemp(qreal in)
+{
+    temp = in;
+}
+
 QString UNKMaterial::getComment()
 {
     return comment;
+}
+
+void UNKMaterial::setComment(QString in)
+{
+    comment = in;
 }
 
 QString UNKMaterial::save()
