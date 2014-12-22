@@ -45,41 +45,44 @@ void UNKMaterial::setComment(QString in)
 QString UNKMaterial::save()
 {
     QString ans;
-    quint16 num_t = 0;
+    quint16 num_t = isotopes.size();
     QVector<UNKIsotop>::iterator i;
     quint16 j = 0;
-    ans += isotopes.size() + ' ';
+    ans += QString("  %1").arg(isotopes.size(),3);
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
-        num_t += i->getModel();
-    ans += num_t + ' ' + comment + '\n';
+        num_t -= i->getModel();
+    ans += QString("%1 %2\n").arg(num_t,3).arg(comment);
+    ans += " ";
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
     {
         ans += QString("%1").arg(i->getNumber(),5);
         if(++j == 10)
         {
-            ans += '\n';
+            ans += "\n ";
             j = 0;
         }
     }
     if(j > 0) ans += '\n';
+    ans += " ";
     j = 0;
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
     {
         ans += QString("%1").arg(i->getConcer(),12,'e',5);
         if(++j == 10)
         {
-            ans += '\n';
+            ans += "\n ";
             j = 0;
         }
     }
     if(j > 0) ans += '\n';
+    ans += "  ";
     j = 0;
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
     {
-        ans += QString("%1").arg(i->getModel(),3);
+        ans += QString("%1").arg(i->getModel(),5);
         if(++j == 10)
         {
-            ans += '\n';
+            ans += "\n ";
             j = 0;
         }
     }
@@ -87,7 +90,7 @@ QString UNKMaterial::save()
     j = 0;
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
     {
-        if(i->getModel())
+        if(!i->getModel())
         {
             ans += QString("%1").arg(i->getNumber_t(),5);
             if(++j == 10)
@@ -101,7 +104,7 @@ QString UNKMaterial::save()
     j = 0;
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
     {
-        if(i->getModel())
+        if(!i->getModel())
         {
             ans += QString("%1").arg(i->getConcer(),12,'e',5);
             if(++j == 10)
@@ -114,6 +117,6 @@ QString UNKMaterial::save()
     if(j > 0) ans += '\n';
     ans += QString("%1").arg(temp,12,'e',5) + '\n';
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
-        ans += i->getMics().save();
+        ans += i->getMics()->save();
     return ans;
 }

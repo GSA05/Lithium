@@ -22,7 +22,7 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
                     int j = 0;
                     int nums[2];
                     int num_group;
-                    int mat = 0;
+                    int mat = -1;
 
 <row1>{
     {int3}                              switch(++i){
@@ -67,7 +67,7 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
                                             switch(i){
                                                 case 0:
                                                     nums[i++] = atoi(yytext);
-                                                    s->getMaterials()->operator[](mat).setIsotopes(nums[0]);
+                                                    s->getMaterials()->operator[](++mat).setIsotopes(nums[0]);
                                                     break;
                                                 case 1:
                                                     nums[i++] = atoi(yytext);
@@ -75,17 +75,17 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
                                             }
                                             if(i == 2) BEGIN(comment);
                                         }
-<comment>.*"\n"                         ++line_num; printf("\n"); s->getMaterials()->operator[](mat++).setComment(yytext); i = 0; BEGIN(isotopes);
+<comment>.*$                         ++line_num; printf("\n"); s->getMaterials()->operator[](mat).setComment(QString(yytext).trimmed()); i = 0; BEGIN(isotopes);
 <isotopes>{
-    {int5}                              printf("%d ",atoi(yytext)); i++;
+    {int5}                              s->getMaterials()->operator[](mat).getIsotopes()->operator[](i++).setNumber(atoi(yytext));
     "\n"                                line_num_prev = line_num++; if(i == nums[0]) { printf("\n"); i = 0; BEGIN(concentrations); }
 }
 <concentrations>{
-    {float12}                           printf("%g ",atof(yytext)); i++;
+    {float12}                           s->getMaterials()->operator[](mat).getIsotopes()->operator[](i++).setConcer(atof(yytext));
     "\n"                                line_num_prev = line_num++; if(i == nums[0]) { printf("\n"); i = 0; BEGIN(models); }
 }
 <models>{
-    {int3}                              printf("%d ",atoi(yytext)); i++;
+    {int3}                              s->getMaterials()->operator[](mat).getIsotopes()->operator[](i++).setModel(atoi(yytext));
     "\n"                                line_num_prev = line_num++; if(i == nums[0]) { printf("\n"); i = 0; if(nums[1]) BEGIN(isotopes_t); else BEGIN(temperature); }
 }
 <isotopes_t>{
