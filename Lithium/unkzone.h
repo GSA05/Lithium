@@ -10,8 +10,11 @@ public:
     UNKZone();
     UNKZone(qreal rad, quint16 mat, bool noth);
     qreal getRadius();
+    void setRadius(qreal in);
     quint16 getMaterial();
+    void setMaterial(quint16 in);
     bool getNothing();
+    void setNothing(bool in);
 
 private:
     qreal radius;

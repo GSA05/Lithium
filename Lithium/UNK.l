@@ -46,7 +46,7 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
 }
 <row2>{
     {float12}                           s->setAlbedo(atoi(yytext));
-    <row2>"\n"                          ++line_num; printf("\n"); BEGIN(row3);
+    "\n"                                ++line_num; printf("\n"); BEGIN(row3);
 }
 <row4,row5>{int3}                       s->setGeometry(atoi(yytext));
 <row3,temperature>{float12}             printf("%g ",atof(yytext)); i++;
