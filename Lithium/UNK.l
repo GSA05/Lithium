@@ -1,12 +1,11 @@
 %{
 #include <math.h>
-extern "C++" class QTextStream;
-#define YY_DECL int yyFlexLexer::yylex(QTextStream* s)
+#include "unkmacsin.h"
 %}
 
 %option noyywrap
 %option c++
-%option outfile="lex.yy.c"
+%option outfile="lex.UNK.c"
 
 int3        [[:digit:]]{1,3}
 int5        [[:digit:]]{3,5}
@@ -19,13 +18,12 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
                     int line_num = 1;
                     int line_num_prev = 0;
                     BEGIN(row1);
-                    char buf[20];
                     int i = 0;
                     int j = 0;
                     int nums[2];
                     int num_group;
 
-<row1,row4,row5>{int3}	                printf("%d ",atoi(yytext)); yyout->write(YYText());
+<row1,row4,row5>{int3}	                printf("%d ",atoi(yytext)); s->setGeometry(atoi(yytext));
 <row2,row3,temperature>{float12}		printf("%g ",atof(yytext)); i++;
 <row1>"\n"		                        ++line_num; printf("\n"); BEGIN(row2);
 <row2>"\n"		                        ++line_num; printf("\n"); BEGIN(row3);
@@ -78,3 +76,22 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
 	}
 	yylex();
 }*/
+UNKMacsinScanner::UNKMacsinScanner(std::istream *in,
+                                   std::ostream *out)
+    : UNKFlexLexer(in,out)
+{
+}
+
+UNKMacsinScanner::~UNKMacsinScanner()
+{
+}
+
+#ifdef yylex
+#undef yylex
+#endif
+
+int UNKFlexLexer::yylex()
+{
+    std::cerr << "in UNKFlexLexer::yylex() !" << std::endl;
+    return 0;
+}

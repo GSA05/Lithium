@@ -4,6 +4,7 @@
 #include <QtGlobal>
 #include <QVector>
 #include <QFileInfo>
+#include <QTextStream>
 #include <unkzone.h>
 #include <unkmaterial.h>
 
@@ -13,10 +14,15 @@ public:
     UNKMacsin();
     ~UNKMacsin();
     quint8 getGeometry();
+    void setGeometry(quint8);
     quint8 getGroups();
+    void setGroups(quint8);
     quint8 getGroupsT();
+    void setGroupsT(quint8);
     quint16 getPred();
+    void setPred(quint16);
     qreal getAlbedo();
+    void setAlbedo(qreal);
     QVector<UNKZone> getZones();
     QVector<UNKMaterial> getMaterials();
     bool load(QFileInfo path);
@@ -34,6 +40,29 @@ private:
     qreal albedo;
     QVector<UNKZone> zones;
     QVector<UNKMaterial> materials;
+};
+
+#ifndef YY_DECL
+#define	YY_DECL						\
+    int				\
+    UNKMacsinScanner::lex(				\
+    UNKMacsin* s                      \
+    )
+#endif
+
+#ifndef __FLEX_LEXER_H
+#define yyFlexLexer UNKFlexLexer
+#include "FlexLexer.h"
+#undef yyFlexLexer
+#endif
+
+class UNKMacsinScanner : public UNKFlexLexer
+{
+public:
+    UNKMacsinScanner(std::istream* arg_yyin = 0,
+                     std::ostream* arg_yyout = 0);
+    virtual ~UNKMacsinScanner();
+    virtual int lex(UNKMacsin* s);
 };
 
 #endif // UNKMACSIN_H

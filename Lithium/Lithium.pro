@@ -25,7 +25,7 @@ HEADERS  += lithium.h \
     unkzone.h \
     unkmacsin.h \
     FlexLexer.h \
-    yy.l
+    UNK.l
 
 FORMS    += lithium.ui \
     temp.ui

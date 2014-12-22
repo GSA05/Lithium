@@ -27,9 +27,19 @@ quint8 UNKMacsin::getGeometry()
     return geometry;
 }
 
+void UNKMacsin::setGeometry(quint8 in)
+{
+    geometry = in;
+}
+
 quint8 UNKMacsin::getGroups()
 {
     return groups;
+}
+
+void UNKMacsin::setGroups(quint8 in)
+{
+    groups = in;
 }
 
 quint8 UNKMacsin::getGroupsT()
@@ -37,14 +47,29 @@ quint8 UNKMacsin::getGroupsT()
     return groupsT;
 }
 
+void UNKMacsin::setGroupsT(quint8 in)
+{
+    groupsT = in;
+}
+
 quint16 UNKMacsin::getPred()
 {
     return pred;
 }
 
+void UNKMacsin::setPred(quint16 in)
+{
+    pred = in;
+}
+
 qreal UNKMacsin::getAlbedo()
 {
     return albedo;
+}
+
+void UNKMacsin::setAlbedo(qreal in)
+{
+    albedo = in;
 }
 
 QVector<UNKZone> UNKMacsin::getZones()
@@ -61,25 +86,9 @@ bool UNKMacsin::load(QFileInfo path)
 {
     std::ifstream file;
     file.open(path.absoluteFilePath().toStdString().c_str());
-    std::ofstream tmp;
-    tmp.open((path.absoluteFilePath()+".tmp").toStdString().c_str());
-    FlexLexer* lexer = new yyFlexLexer;
-    lexer->yylex(&file,&tmp);
-    tmp.flush();
+    UNKMacsinScanner* lexer = new UNKMacsinScanner(&file);
+    lexer->lex(this);
     file.close();
-    tmp.close();
-    //yyin = fopen(path.absoluteFilePath().toUtf8().constData(),"r");
-    //FILE *out;
-    //yyout = out;//fopen((QString(path.absoluteDir().path()) + "raw.dat").toUtf8().constData(),"w");
-    //yylex();
-    //QFile file(path.absoluteDir().path() + "raw.dat");
-    //file.open(QIODevice::Text|QIODevice::ReadOnly);
-    //QTextStream in(out);
-    quint16 geom,num_z,groups,groupsT,num_m,pred;
-    qreal alb;
-    //in>>geom>>num_z>>groups>>groupsT>>num_m>>pred;
-    //in>>alb;
-    //file.close();
     return true;
 }
 
