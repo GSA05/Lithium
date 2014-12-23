@@ -115,7 +115,7 @@ QString UNKMaterial::save()
         }
     }
     if(j > 0) ans += '\n';
-    ans += QString("%1").arg(temp,12,'e',5) + '\n';
+    ans += QString(" %1\n").arg(temp,12,'e',5);
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
         ans += i->getMics()->save();
     return ans;

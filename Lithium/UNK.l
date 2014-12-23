@@ -97,7 +97,7 @@ comment		[^[:space:]][^{int3}{int5}{float12}]+$
     "\n"                                line_num_prev = line_num++; if(i == nums[1]) { printf("\n"); i = 0; BEGIN(temperature); }
 }
 <temperature>{
-    {float12}                           printf("%g ",atof(yytext)); i++;
+    {float12}                           s->getMaterials()->operator[](mat).setTemp(atof(yytext)); i++;
     "\n"                                if(i != 0) { ++line_num; printf("\n"); i = 0; j = 0; BEGIN(groups); }
 }
 <groups>{
