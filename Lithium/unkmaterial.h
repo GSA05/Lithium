@@ -12,6 +12,7 @@ public:
     UNKMaterial();
     UNKMaterial(QVector<UNKIsotop> iso, qreal tem, QString com);
     QVector<UNKIsotop>* getIsotopes();
+    QVector<UNKIsotop*>* getIsotopes_t();
     void setIsotopes(int num);
     qreal getTemp();
     void setTemp(qreal in);

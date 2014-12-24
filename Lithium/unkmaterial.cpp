@@ -17,6 +17,15 @@ QVector<UNKIsotop>* UNKMaterial::getIsotopes()
     return &isotopes;
 }
 
+QVector<UNKIsotop*>* UNKMaterial::getIsotopes_t()
+{
+    QVector<UNKIsotop*>* iso = new QVector<UNKIsotop*>();
+    QVector<UNKIsotop>::iterator i;
+    for(i = isotopes.begin(); i != isotopes.end(); ++i)
+        if(!i->getModel()) iso->append(i);
+    return iso;
+}
+
 void UNKMaterial::setIsotopes(int num)
 {
     isotopes = QVector<UNKIsotop>(num,UNKIsotop(0,0,false,UNKMics()));
@@ -86,7 +95,7 @@ QString UNKMaterial::save()
             j = 0;
         }
     }
-    if(j > 0) ans += '\n';
+    if(j > 0) ans += "\n ";
     j = 0;
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
     {
@@ -95,12 +104,12 @@ QString UNKMaterial::save()
             ans += QString("%1").arg(i->getNumber_t(),5);
             if(++j == 10)
             {
-                ans += '\n';
+                ans += "\n ";
                 j = 0;
             }
         }
     }
-    if(j > 0) ans += '\n';
+    if(j > 0) ans += "\n ";
     j = 0;
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
     {
@@ -109,13 +118,13 @@ QString UNKMaterial::save()
             ans += QString("%1").arg(i->getConcer(),12,'e',5);
             if(++j == 10)
             {
-                ans += '\n';
+                ans += "\n ";
                 j = 0;
             }
         }
     }
-    if(j > 0) ans += '\n';
-    ans += QString(" %1\n").arg(temp,12,'e',5);
+    if(j > 0) ans += "\n ";
+    ans += QString("%1\n").arg(temp,12,'e',5);
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
         ans += i->getMics()->save();
     return ans;

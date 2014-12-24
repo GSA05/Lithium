@@ -11,6 +11,7 @@ public:
     UNKMics();
     UNKMics(QVector<quint8> grp);
     QVector<quint8>* getGroups();
+    void setGroups(quint8 num);
     QString save();
 
 private:
@@ -32,7 +33,7 @@ public:
     quint16 getNumber_t();
     void setNumber_t(quint16 in);
     UNKMics* getMics();
-    void setMics(quint8 num);
+    void setMics(UNKMics in);
 
 private:
     quint16 number;

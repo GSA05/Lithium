@@ -16,6 +16,11 @@ QVector<quint8> *UNKMics::getGroups()
     return &groups;
 }
 
+void UNKMics::setGroups(quint8 num)
+{
+    groups = QVector<quint8>(num,0);
+}
+
 QString UNKMics::save()
 {
     QString ans;
@@ -90,7 +95,7 @@ UNKMics *UNKIsotop::getMics()
     return &mics;
 }
 
-void UNKIsotop::setMics(quint8 num)
+void UNKIsotop::setMics(UNKMics in)
 {
-    mics = UNKMics(QVector<quint8>(num,0));
+    mics = in;
 }
