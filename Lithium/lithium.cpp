@@ -1,6 +1,7 @@
 #include "lithium.h"
 #include "unkmacsin.h"
 #include <QFileDialog>
+#include <QMessageBox>
 
 //Lithium
 Lithium::Lithium(QWidget *parent)
@@ -74,5 +75,6 @@ void Lithium::on_tempButton_clicked()
             mac.changeTemp(tempDlg.getTemp());
             mac.save(QFileInfo(path));
         }
+        QMessageBox::information(this,"Сообщение","Все файлы успешно изменены. Резервная копия файлов в папке bck.");
     }
 }
