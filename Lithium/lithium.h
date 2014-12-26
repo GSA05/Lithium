@@ -3,11 +3,11 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QStringListModel>
-#include <QFile>
+#include <QFileInfo>
 #include <QTextStream>
 #include <QRegularExpression>
 #include "ui_lithium.h"
-#include "ui_temp.h"
+#include "tempdialog.h"
 
 class Lithium : public QMainWindow
 {
@@ -16,6 +16,7 @@ class Lithium : public QMainWindow
 public:
 	Lithium(QWidget *parent = 0);
 	~Lithium();
+    static void makeBackup(QFileInfo path);
 
 private slots:
     void on_openAction_triggered();
@@ -26,28 +27,9 @@ private slots:
 
 private:
 	Ui::LithiumClass ui;
-    Ui::Dialog uiDialog;
-    QDialog tempDialog;
+    tempDialog tempDlg;
     QString currentDir;
     QStringListModel list;
-};
-
-class MacsinFile
-{
-public:
-    MacsinFile(QString path = "");
-    ~MacsinFile();
-    void open(QString path); // открывает файл
-    void close(); // закрывает файл
-    void add(int number, float conc); // добавляет изотоп в материалы с заданной концентрацией
-    void remove(int number); // убирает изотоп из материалов
-    void changeTemp(float temp, QString pattern); // меняет температуру материалов
-
-private:
-    QString pth;
-    QFile fileIn,fileOut;
-    QTextStream in,out;
-    QRegularExpression iztp,cncr,iztp_add;
 };
 
 #endif // LITHIUM_H

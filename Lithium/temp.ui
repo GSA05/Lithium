@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>tempDialog</class>
+ <widget class="QDialog" name="tempDialog">
   <property name="windowModality">
    <enum>Qt::WindowModal</enum>
   </property>
@@ -20,6 +20,9 @@
    <bool>true</bool>
   </property>
   <layout class="QFormLayout" name="formLayout">
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+   </property>
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
@@ -41,7 +44,11 @@
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLineEdit" name="izotEdit"/>
+      <widget class="QLineEdit" name="izotEdit">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_2">
@@ -52,20 +59,23 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0">
-    <widget class="QCheckBox" name="checkBox">
-     <property name="text">
-      <string>Все материалы</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
+   <item row="4" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="checkBox">
+     <property name="text">
+      <string>Все материалы</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -76,12 +86,12 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>tempDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>164</x>
+     <y>116</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -92,12 +102,12 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>tempDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>164</x>
+     <y>116</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -105,5 +115,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>tempDialog</receiver>
+   <slot>allMaterials(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>225</x>
+     <y>78</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>allMaterials(bool)</slot>
+ </slots>
 </ui>

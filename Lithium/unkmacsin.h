@@ -31,7 +31,7 @@ public:
     bool addMaterial();
     bool removeMaterial();
     bool changeAllMaterials();
-    bool changeTemp();
+    void changeTemp(qreal temp);
 
 private:
     quint8 geometry;

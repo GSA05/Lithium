@@ -99,7 +99,6 @@ bool UNKMacsin::load(QFileInfo path)
     UNKMacsinScanner* lexer = new UNKMacsinScanner(&file);
     lexer->lex(this);
     file.close();
-    this->save(path.absoluteFilePath()+".tmp");
     return true;
 }
 
@@ -152,4 +151,11 @@ bool UNKMacsin::save(QFileInfo path)
         out<<k->save();
     file.close();
     return true;
+}
+
+void UNKMacsin::changeTemp(qreal temp)
+{
+    QVector<UNKMaterial>::iterator i;
+    for(i = materials.begin(); i != materials.end(); ++i)
+        i->setTemp(temp);
 }

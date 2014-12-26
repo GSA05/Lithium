@@ -60,7 +60,11 @@ QString UNKMaterial::save()
     ans += QString("  %1").arg(isotopes.size(),3);
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
         num_t -= i->getModel();
-    ans += QString("%1 %2\n").arg(num_t,3).arg(comment);
+    ans += QString("%1").arg(num_t,3);
+    if(!comment.isEmpty())
+        ans += QString(" %1\n").arg(comment);
+    else
+        ans += "\n";
     ans += " ";
     for(i = isotopes.begin(); i != isotopes.end(); ++i)
     {
