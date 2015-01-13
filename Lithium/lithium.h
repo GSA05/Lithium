@@ -8,6 +8,7 @@
 #include <QRegularExpression>
 #include "ui_lithium.h"
 #include "tempdialog.h"
+#include "isotopdialog.h"
 
 class Lithium : public QMainWindow
 {
@@ -28,6 +29,7 @@ private slots:
 private:
 	Ui::LithiumClass ui;
     tempDialog tempDlg;
+    isotopDialog isotopDlg;
     QString currentDir;
     QStringListModel list;
 };

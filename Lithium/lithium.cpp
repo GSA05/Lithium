@@ -44,6 +44,7 @@ void Lithium::on_openAction_triggered()
         currentDir = diag->directory().currentPath();
         list.setStringList(fileNames);
         ui.tempButton->setEnabled(true);
+        ui.addButton->setEnabled(true);
     }
 }
 
@@ -54,7 +55,10 @@ void Lithium::on_quitAction_triggered()
 
 void Lithium::on_addButton_clicked()
 {
+    if(isotopDlg.exec())
+    {
 
+    }
 }
 
 void Lithium::on_removeButton_clicked()

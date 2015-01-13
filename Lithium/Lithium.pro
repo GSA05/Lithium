@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     unkmaterial.cpp \
     unkzone.cpp \
     unkmacsin.cpp \
-    tempdialog.cpp
+    tempdialog.cpp \
+    isotopdialog.cpp
 
 HEADERS  += lithium.h \
     unkisotop.h \
@@ -27,7 +28,9 @@ HEADERS  += lithium.h \
     unkmacsin.h \
     FlexLexer.h \
     UNK.l \
-    tempdialog.h
+    tempdialog.h \
+    isotopdialog.h
 
 FORMS    += lithium.ui \
-    temp.ui
+    temp.ui \
+    isotop.ui
