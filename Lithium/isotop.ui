@@ -27,6 +27,12 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="inputMask">
+        <string>9999</string>
+       </property>
+       <property name="text">
+        <string>0710</string>
+       </property>
       </widget>
      </item>
      <item>
@@ -41,7 +47,17 @@
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLineEdit" name="concrEdit_2"/>
+      <widget class="QLineEdit" name="concrEdit_2">
+       <property name="inputMask">
+        <string>#9.99999e#99</string>
+       </property>
+       <property name="text">
+        <string>0.00001e-21</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_2">

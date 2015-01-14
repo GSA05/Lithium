@@ -27,8 +27,11 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLineEdit" name="tempEdit">
+       <property name="inputMask">
+        <string>#9.99999e#99</string>
+       </property>
        <property name="text">
-        <string>300</string>
+        <string>3.00000e+02</string>
        </property>
       </widget>
      </item>
