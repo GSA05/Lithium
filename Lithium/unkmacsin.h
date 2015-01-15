@@ -32,6 +32,7 @@ public:
     bool removeMaterial();
     bool changeAllMaterials();
     void changeTemp(qreal temp);
+    quint8 addIsotopForAll(quint16 num, qreal conc);
 
 private:
     quint8 geometry;

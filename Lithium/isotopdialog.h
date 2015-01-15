@@ -9,6 +9,8 @@ class isotopDialog : public QDialog
     Q_OBJECT
 public:
     explicit isotopDialog(QDialog *parent = 0);
+    quint16 getNum();
+    qreal getConc();
 
 signals:
 

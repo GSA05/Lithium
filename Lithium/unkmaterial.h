@@ -18,6 +18,7 @@ public:
     void setTemp(qreal in);
     QString getComment();
     void setComment(QString in);
+    quint8 addIsotop(UNKIsotop in);
     QString save();
 
 private:

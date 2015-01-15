@@ -20,7 +20,7 @@
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLineEdit" name="isotopEdit">
+      <widget class="QLineEdit" name="numEdit">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -31,7 +31,7 @@
         <string>9999</string>
        </property>
        <property name="text">
-        <string>0710</string>
+        <string>0325</string>
        </property>
       </widget>
      </item>
@@ -47,12 +47,12 @@
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLineEdit" name="concrEdit_2">
+      <widget class="QLineEdit" name="concEdit">
        <property name="inputMask">
         <string>#9.99999e#99</string>
        </property>
        <property name="text">
-        <string>0.00001e-21</string>
+        <string>1.00000e-7</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

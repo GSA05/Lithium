@@ -44,13 +44,18 @@ UNKIsotop::UNKIsotop(quint16 num, qreal con, bool mod, UNKMics mic)
     mics = mic;
 }
 
+/*bool UNKIsotop::operator==(const UNKIsotop &r)
+{
+    return this->getNumber() == r.getNumber();
+}*/
+
 void UNKIsotop::addT(quint16 num_t)
 {
     number_t = num_t;
     model = true;
 }
 
-quint16 UNKIsotop::getNumber()
+quint16 UNKIsotop::getNumber() const
 {
     return number;
 }
@@ -98,4 +103,10 @@ UNKMics *UNKIsotop::getMics()
 void UNKIsotop::setMics(UNKMics in)
 {
     mics = in;
+}
+
+
+bool operator==(const UNKIsotop &l, const UNKIsotop &r)
+{
+    return l.getNumber() == r.getNumber();
 }

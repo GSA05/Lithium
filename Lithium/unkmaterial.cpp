@@ -51,6 +51,19 @@ void UNKMaterial::setComment(QString in)
     comment = in;
 }
 
+quint8 UNKMaterial::addIsotop(UNKIsotop in)
+{
+    if(isotopes.indexOf(in) == -1)
+    {
+        isotopes.append(in);
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
 QString UNKMaterial::save()
 {
     QString ans;

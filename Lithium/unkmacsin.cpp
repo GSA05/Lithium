@@ -159,3 +159,13 @@ void UNKMacsin::changeTemp(qreal temp)
     for(i = materials.begin(); i != materials.end(); ++i)
         i->setTemp(temp);
 }
+
+quint8 UNKMacsin::addIsotopForAll(quint16 num, qreal conc)
+{
+    QVector<UNKMaterial>::iterator i;
+    UNKIsotop add(num,conc,1,UNKMics());
+    quint8 ret = 0;
+    for(i = materials.begin(); i != materials.end(); ++i)
+        ret |= i->addIsotop(add);
+    return ret;
+}

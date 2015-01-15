@@ -23,8 +23,9 @@ class UNKIsotop
 public:
     UNKIsotop();
     UNKIsotop(quint16 num, qreal con, bool mod, UNKMics mic);
+    //inline bool operator==(const UNKIsotop& r);
     void addT(quint16 num_t);
-    quint16 getNumber();
+    quint16 getNumber() const;
     void setNumber(quint16 in);
     qreal getConcer();
     void setConcer(qreal in);
@@ -43,4 +44,5 @@ private:
     UNKMics mics;
 };
 
+bool operator==(const UNKIsotop& l, const UNKIsotop& r);
 #endif // UNKISOTOP_H

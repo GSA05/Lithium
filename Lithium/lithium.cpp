@@ -57,7 +57,16 @@ void Lithium::on_addButton_clicked()
 {
     if(isotopDlg.exec())
     {
-
+        for(int i = 0; i < list.rowCount(); i++)
+        {
+            UNKMacsin mac;
+            QString path = list.data(list.index(i,0),0).toString();
+            makeBackup(QFileInfo(path));
+            mac.load(QFileInfo(path));
+            mac.addIsotopForAll(isotopDlg.getNum(),isotopDlg.getConc());
+            mac.save(QFileInfo(path));
+        }
+        QMessageBox::information(this,"Сообщение","Все файлы успешно изменены. Резервная копия файлов в папке bck.");
     }
 }
 
