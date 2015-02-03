@@ -8,16 +8,20 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     QStandardItem *parentItem = projectExplorer->invisibleRootItem();
-    QStandardItem *item1 = new QStandardItem(QString("Материалы"));
-    item1->setIcon(QIcon(":/icons/Materials.bmp"));
-    parentItem->appendRow(item1);
-    QStandardItem *item2 = new QStandardItem(QString("Ячейки"));
-    item2->setIcon(QIcon(":/icons/Cells.bmp"));
-    parentItem->appendRow(item2);
-    QStandardItem *item3 = new QStandardItem(QString("Геометрия"));
-    parentItem->appendRow(item3);
-    QStandardItem *item4 = new QStandardItem(QString("Параметры"));
-    parentItem->appendRow(item4);
+    QStandardItem *item = new QStandardItem(QString("Материалы"));
+    item->setIcon(QIcon(":/icons/Materials.bmp"));
+    item->setEditable(false);
+    parentItem->appendRow(item);
+    item = new QStandardItem(QString("Ячейки"));
+    item->setIcon(QIcon(":/icons/Cells.bmp"));
+    item->setEditable(false);
+    parentItem->appendRow(item);
+    item = new QStandardItem(QString("Геометрия"));
+    item->setEditable(false);
+    parentItem->appendRow(item);
+    item = new QStandardItem(QString("Параметры"));
+    item->setEditable(false);
+    parentItem->appendRow(item);
     ui->treeView->setModel(projectExplorer);
 }
 
