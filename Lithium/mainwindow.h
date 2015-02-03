@@ -16,6 +16,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_openAction_triggered();
+
 private:
     Ui::MainWindow *ui;
     QStandardItemModel *projectExplorer;

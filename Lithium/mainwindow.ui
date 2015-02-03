@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_3">
     <item>
-     <widget class="QTextEdit" name="textEdit"/>
+     <widget class="QGraphicsView" name="graphicsView"/>
     </item>
    </layout>
   </widget>
@@ -33,23 +33,29 @@
     <property name="title">
      <string>Файл</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
+    <addaction name="newAction"/>
+    <addaction name="openAction"/>
     <addaction name="separator"/>
-    <addaction name="action_4"/>
+    <addaction name="closeAction"/>
     <addaction name="separator"/>
-    <addaction name="action_6"/>
-    <addaction name="action_7"/>
-    <addaction name="action_8"/>
+    <addaction name="saveAction"/>
+    <addaction name="saveAsAction"/>
+    <addaction name="saveAllAction"/>
     <addaction name="separator"/>
     <addaction name="exitAction"/>
    </widget>
    <widget class="QMenu" name="menu_2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="title">
      <string>Правка</string>
     </property>
    </widget>
    <widget class="QMenu" name="menu_3">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="title">
      <string>Помощь</string>
     </property>
@@ -68,7 +74,7 @@
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle">
-    <string>Менеджер проекта</string>
+    <string>Данные варианта</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -77,6 +83,12 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QTreeView" name="treeView">
+       <property name="editTriggers">
+        <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::ExtendedSelection</enum>
+       </property>
        <property name="rootIsDecorated">
         <bool>true</bool>
        </property>
@@ -99,32 +111,44 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <action name="action">
+  <action name="newAction">
    <property name="text">
     <string>Новый вариант...</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="openAction">
    <property name="text">
     <string>Открыть вариант...</string>
    </property>
   </action>
-  <action name="action_4">
+  <action name="closeAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Закрыть вариант</string>
    </property>
   </action>
-  <action name="action_6">
+  <action name="saveAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Сохранить</string>
    </property>
   </action>
-  <action name="action_7">
+  <action name="saveAsAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Сохранить как...</string>
    </property>
   </action>
-  <action name="action_8">
+  <action name="saveAllAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Сохранить всё</string>
    </property>
@@ -159,4 +183,7 @@
    </hints>
   </connection>
  </connections>
+ <slots>
+  <slot>open()</slot>
+ </slots>
 </ui>
