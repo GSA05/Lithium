@@ -6,11 +6,11 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    projectExplorer(new QStandardItemModel)
+    projectExplorer(new UNKCase)
 {
     ui->setupUi(this);
 
-    QStandardItem *parentItem = projectExplorer->invisibleRootItem();
+    QStandardItem *parentItem = new QStandardItem;
     QStandardItem *item = new QStandardItem(QString("Материалы"));
     item->setIcon(QIcon(":/icons/Materials.bmp"));
     item->setEditable(false);
@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     item = new QStandardItem(QString("Параметры"));
     item->setEditable(false);
     parentItem->appendRow(item);
+    projectExplorer->setRootItem(parentItem);
     ui->treeView->setModel(projectExplorer);
 
     QGraphicsScene *scene = new QGraphicsScene(ui->graphicsView);
@@ -51,7 +52,7 @@ void MainWindow::on_openAction_triggered()
             QStandardItem *item = new QStandardItem(*i);
             UNKMacsin *mac = new UNKMacsin;
             mac->load(QFileInfo(*i));
-            projectExplorer->findItems(QString("Ячейки")).first()->appendRow(item);
+            //projectExplorer->findItems(QString("Ячейки")).first()->appendRow(item);
         }
     }
 }

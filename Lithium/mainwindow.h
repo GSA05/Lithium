@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStandardItemModel>
+#include "unkcase.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,7 +22,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QStandardItemModel *projectExplorer;
+    UNKCase *projectExplorer;
 };
 
 #endif // MAINWINDOW_H
