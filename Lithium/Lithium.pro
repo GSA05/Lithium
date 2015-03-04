@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     tempdialog.cpp \
     isotopdialog.cpp \
     mainwindow.cpp \
-    unkcase.cpp
+    unkcase.cpp \
+    material.cpp
 
 HEADERS  += lithium.h \
     unkisotop.h \
@@ -33,7 +34,8 @@ HEADERS  += lithium.h \
     tempdialog.h \
     isotopdialog.h \
     mainwindow.h \
-    unkcase.h
+    unkcase.h \
+    material.h
 
 FORMS    += lithium.ui \
     temp.ui \

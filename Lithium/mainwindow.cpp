@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "unkmacsin.h"
 #include <QFileDialog>
+#include "material.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -10,10 +11,18 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //QStandardItem *parentItem = new QStandardItem;
     QStandardItem *parentItem = new QStandardItem;
     QStandardItem *item = new QStandardItem(QString("Материалы"));
     item->setIcon(QIcon(":/icons/Materials.bmp"));
     item->setEditable(false);
+    Material *fuel = new Material;
+    fuel->setText(QString("Топливо"));
+    Isotop *u235 = new Isotop();
+    Isotop *u238 = new Isotop();
+    fuel->appendRow(u235);
+    fuel->appendRow(u238);
+    item->appendRow(fuel);
     parentItem->appendRow(item);
     item = new QStandardItem(QString("Ячейки"));
     item->setIcon(QIcon(":/icons/Cells.bmp"));
